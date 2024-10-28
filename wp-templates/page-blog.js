@@ -60,7 +60,7 @@ const GET_POSTS = gql`
 	}
 `;
 
-const POSTS_PER_PAGE = 24;
+const POSTS_PER_PAGE = 6;
 
 export default function BlogPage(props) {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -106,7 +106,7 @@ export default function BlogPage(props) {
 	const posts = postsData?.posts?.edges ?? [];
 	const pageInfo = postsData?.posts?.pageInfo;
 
-	const totalPosts = 100;
+	const totalPosts = 6;
 	const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
 	const handlePageClick = (pageNumber) => {

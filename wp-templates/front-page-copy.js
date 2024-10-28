@@ -2,39 +2,42 @@ import { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
-import { Footer, Main, NavigationMenu, SEO } from "../components";
+import { Main, NavigationMenu, SEO } from "../components";
 
-import { HeroImage } from "../components/UI/Heros/HeroImage";
-import { Carusel } from "../components/UI/Caruseles/Carusel";
 import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
-import { TitleCopy } from "../components/UI/Titles/TitleCopy";
-import { TextImage } from "../components/UI/TextImages/TextImage";
+import { HeroImage } from "../components/UI/Heros/HeroImage";
 import { CardsGrid } from "../components/UI/Cards/CardsGrid";
-import { BannerTextCta } from "../components/UI/Banners/BannerTextCta";
+import { CardsBigSmall } from "../components/UI/Cards/CardsBigSmall";
+import { CardsGridThreeCarusel } from "../components/UI/Cards/CardsGridThreeCarusel";
+import { Footer } from "../components/UI/Footer";
 
 export default function Component(props) {
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
 
-	const siteSeo = props.data.pageBy.seo;
+	const siteSeo = props?.data?.pageBy?.seo;
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
-	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
+	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 
-	const mostrarHero = props?.data?.pageBy?.paginaGatronomia?.mostrarhero;
+	const grupoHero = props?.data?.pageBy?.paginaInicio?.grupoHero ?? [];
+	const grupoRefugio = props?.data?.pageBy?.paginaInicio?.gruporefugio ?? [];
+	const grupohabitaciones =
+		props?.data?.pageBy?.paginaInicio?.grupohabitaciones ?? [];
+	const grupoexperiencias =
+		props?.data?.pageBy?.paginaInicio?.grupoexperiencias ?? [];
 
-	const grupoHero = props?.data?.pageBy?.paginaGatronomia?.grupohero ?? [];
-	const grupoGaleria =
-		props?.data?.pageBy?.paginaGatronomia?.grupoGaleria ?? [];
-	const grupoGaleriaCtaTop =
-		props?.data?.pageBy?.paginaGatronomia?.grupoGaleria?.grupoctatop ?? [];
-	const grupoTexto = props?.data?.pageBy?.paginaGatronomia?.grupotexto ?? [];
-	const grupoPlatos = props?.data?.pageBy?.paginaGatronomia?.grupoPlatos ?? [];
-	const grupoCta = props?.data?.pageBy?.paginaGatronomia?.grupocta ?? [];
+	const mostrarHero = props?.data?.pageBy?.paginaInicio?.mostrarHero;
+	const mostrarRefigio = props?.data?.pageBy?.paginaInicio?.mostrarRefigio;
+	const mostrarHabitaciones =
+		props?.data?.pageBy?.paginaInicio?.mostrarHabitaciones;
+	const mostrarExperiencias =
+		props?.data?.pageBy?.paginaInicio?.mostrarExperiencias;
+
 	const [isNavShown, setIsNavShown] = useState(false);
 	return (
 		<>
@@ -52,13 +55,11 @@ export default function Component(props) {
 				setIsNavShown={setIsNavShown}
 			>
 				{mostrarHero && <HeroImage data={grupoHero} />}
-
-				<TitleCopy data={grupoGaleria} />
-				<Carusel data={grupoGaleria} />
-				<BannerTextCta data={grupoGaleriaCtaTop} />
-				<TextImage data={grupoTexto} />
-				<CardsGrid data={grupoPlatos} className="text--center" />
-				<BannerTextCta data={grupoCta} />
+				{mostrarRefigio && <CardsGrid data={grupoRefugio} />}
+				{mostrarHabitaciones && <CardsBigSmall data={grupohabitaciones} />}
+				{mostrarExperiencias && (
+					<CardsGridThreeCarusel data={grupoexperiencias} />
+				)}
 			</Main>
 			<Footer
 				themeGeneralSettings={themeGeneralSettings}
@@ -80,6 +81,26 @@ Component.query = gql`
 	) {
 		generalSettings {
 			...BlogInfoFragment
+		}
+		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		footerMenuItems: menuItems(where: { location: $footerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
 		}
 		themeGeneralSettings {
 			pageSlug
@@ -110,27 +131,7 @@ Component.query = gql`
 				}
 			}
 		}
-		headerMenuItems: menuItems(where: { location: $headerLocation }) {
-			nodes {
-				...NavigationMenuItemFragment
-			}
-		}
-		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
-			nodes {
-				...NavigationMenuItemFragment
-			}
-		}
-		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
-			nodes {
-				...NavigationMenuItemFragment
-			}
-		}
-		footerMenuItems: menuItems(where: { location: $footerLocation }) {
-			nodes {
-				...NavigationMenuItemFragment
-			}
-		}
-		pageBy(uri: "/restaurante") {
+		pageBy(uri: "/") {
 			seo {
 				title
 				metaDesc
@@ -139,9 +140,13 @@ Component.query = gql`
 					mediaItemUrl
 				}
 			}
-			paginaGatronomia {
-				mostrarhero
-				grupohero {
+			paginaInicio {
+				mostrarHero
+				mostrarRefigio
+				mostrarHabitaciones
+				mostrarExperiencias
+
+				grupoHero {
 					titulo
 					imagen {
 						mediaItemUrl
@@ -149,80 +154,53 @@ Component.query = gql`
 						title
 					}
 				}
-				grupoGaleria {
-					titulo
+				gruporefugio {
 					descripcion
-					galeria {
-						mediaItemUrl
-						altText
-						title
-					}
-					grupoctatop {
+					titulo
+					targetas {
+						detalle
+						titulo
 						imagen {
 							mediaItemUrl
 							altText
 							title
 						}
-						titulo
+					}
+				}
+				grupohabitaciones {
+					titulo
+					descripcion
+					targetas {
 						cta {
 							url
 							title
 							target
 						}
+						titulo
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+						columnas
 					}
 				}
-				grupotexto {
-					items {
-						estilo
+				grupoexperiencias {
+					titulo
+					descripcion
+					targetas {
 						titulo
+						subTitulo
 						descripcion
 						imagen {
 							mediaItemUrl
 							altText
 							title
-						}
-						cta {
-							target
-							title
-							url
-						}
-						items {
-							titulo
-							icono {
-								mediaItemUrl
+							mediaDetails {
+								height
+								width
 							}
 						}
-					}
-				}
-				grupoPlatos {
-					titulo
-					descripcion
-					targetas {
-						imagen {
-							mediaItemUrl
-							altText
-							title
-						}
-						detalle
-						titulo
-					}
-					cta {
-						url
-						title
-						target
-					}
-				}
-				grupocta {
-					imagen {
-						mediaItemUrl
-						altText
-						title
-					}
-					titulo
-					cta {
-						url
-						title
-						target
 					}
 				}
 			}

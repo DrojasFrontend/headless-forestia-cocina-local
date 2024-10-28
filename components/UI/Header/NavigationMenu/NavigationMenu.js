@@ -49,7 +49,7 @@ export default function NavigationMenu({
 					<Link href="#">
 						<a className={cx("location")}>
 							<IconLocation />
-							Hoteles Casa Selvaggio
+							Forestia Cocina Local
 						</a>
 					</Link>
 				</li>

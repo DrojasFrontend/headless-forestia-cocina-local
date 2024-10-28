@@ -111,7 +111,7 @@ export default function Footer({
 					<div className={cx("grid-bottom")}>
 						<div></div>
 						<div className={cx("copy")}>
-							<p>© Copyright 2024, CASA SELVAGGIO</p>
+							<p>© Copyright 2024, FORESTIA COCINA LOCAL</p>
 						</div>
 					</div>
 				</Container>
