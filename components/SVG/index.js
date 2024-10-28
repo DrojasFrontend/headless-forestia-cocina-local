@@ -1,0 +1,15 @@
+import { IconCheck } from "./IconCheck";
+import { IconChevronUp } from "./IconChevronUp";
+import { IconChevronDown } from "./IconChevronDown";
+import { IconLocation } from "./IconLocation";
+import { IconEnvelope } from "./IconEnvelope";
+export { IconFacebook } from "./IconFacebook";
+export { IconInstagram } from "./IconInstagram";
+export { IconLocation } from "./IconLocation";
+export { IconMenu } from "./IconMenu";
+export { IconPhone } from "./IconPhone";
+export { IconTikTok } from "./IconTikTok";
+export { IconWaze } from "./IconWaze";
+export { IconWhatsapp } from "./IconWhatsapp";
+export { IconWorld } from "./IconWorld";
+export { IconYoutube } from "./IconYoutube";

@@ -1,0 +1,67 @@
+@import "/styles/mixin";
+
+.component {
+	margin: 0 auto;
+	line-height: 1.6875;
+
+	:global {
+		// Scope WordPress block styles within ContentWrapper.
+		@import "styles/blocks";
+
+		* {
+			max-width: 100%;
+		}
+
+		figure {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin: 0 0 rem(20);
+			color: var(--color-primary);
+		}
+
+		p, li {
+			color: var(--color-gray);
+		}
+
+		p {
+			margin-bottom: rem(20);
+		}
+
+		strong {
+			font-weight: 700;
+			color: var(--color-primary);
+		}
+
+		a {
+			text-decoration: underline;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+		}
+
+		img {
+			display: block;
+			height: auto;
+			max-width: 100%;
+		}
+
+		.wp-block-embed {
+			display: flex;
+			justify-content: center;
+			padding: rem(30) 0;
+		}
+
+		iframe {
+		}
+	}
+}
