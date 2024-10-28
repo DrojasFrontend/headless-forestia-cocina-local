@@ -17,10 +17,6 @@ import { Container } from "../../../Layout/Container";
 const TextImage = ({ data }) => {
   const { items } = data;
 
-  if (!items?.length) {
-    return <p>No hay slides disponibles.</p>;
-  }
-
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState([]);
@@ -48,7 +44,6 @@ const TextImage = ({ data }) => {
           {items?.map((item, index) => (
             <div
               key={index}
-              onClick={() => openLightbox(index, item.imagen)}
               className={cx(["grid", item?.estilo])}
             >
               <div className={cx("content")}>
@@ -67,14 +62,14 @@ const TextImage = ({ data }) => {
                     ))}
                 </div>
                 {item?.cta && (
-                  <Link href="#">
-                    <a className="button button--primary">Reservar</a>
+                  <Link href={item?.cta?.url}>
+                    <a className="button button--primary">{item?.cta.title}</a>
                   </Link>
                 )}
               </div>
-              <div className={cx("img")}>
+              <div className={cx("img")} onClick={() => openLightbox(index, item?.imagen)}>
                 <Slider {...settings}>
-                  {item?.imagen.map((img, idx) => (
+                  {item?.imagen?.map((img, idx) => (
                     <div key={idx} className={cx("slide")}>
                       <Image
                         src={img?.mediaItemUrl}
@@ -92,25 +87,25 @@ const TextImage = ({ data }) => {
             </div>
           ))}
 
-          {isOpen && currentImages.length > 0 && (
+          {isOpen && currentImages?.length > 0 && (
             <Lightbox
-              mainSrc={currentImages[photoIndex].mediaItemUrl}
+              mainSrc={currentImages[photoIndex]?.mediaItemUrl}
               nextSrc={
-                currentImages[(photoIndex + 1) % currentImages.length].mediaItemUrl
+                currentImages[(photoIndex + 1) % currentImages?.length]?.mediaItemUrl
               }
               prevSrc={
                 currentImages[
-                  (photoIndex + currentImages.length - 1) % currentImages.length
-                ].mediaItemUrl
+                  (photoIndex + currentImages?.length - 1) % currentImages?.length
+                ]?.mediaItemUrl
               }
               onCloseRequest={() => setIsOpen(false)}
               onMovePrevRequest={() =>
                 setPhotoIndex(
-                  (photoIndex + currentImages.length - 1) % currentImages.length
+                  (photoIndex + currentImages?.length - 1) % currentImages?.length
                 )
               }
               onMoveNextRequest={() =>
-                setPhotoIndex((photoIndex + 1) % currentImages.length)
+                setPhotoIndex((photoIndex + 1) % currentImages?.length)
               }
             />
           )}

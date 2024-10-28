@@ -15,10 +15,9 @@ import LogoGreen from "/public/img/logo-green-casaselvaggio.svg";
 
 export default function Header({
 	title,
-	menuItems,
+	menuHeaderItems,
 	isNavShown,
 	setIsNavShown,
-	router,
 }) {
 	const [scrolled, setScrolled] = useState(false);
 	const handleScroll = () => {
@@ -41,6 +40,16 @@ export default function Header({
 		<header className={cx(["component", menuClasses])}>
 			<Container>
 				<div className={cx(["grid"])}>
+					<div className={cx("left")}>
+						{menuHeaderItems?.slice(0, 4).map((m, idx) => {
+							return (
+								<Link href={m?.path} key={idx}>
+								<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
+								</Link>
+							);
+						})}
+					</div>
+
 					<div className={cx(["logo"])}>
 						<Link href="/">
 							<a>
@@ -65,6 +74,17 @@ export default function Header({
 							</a>
 						</Link>
 					</div>
+
+					<div className={cx("right")}>
+						{menuHeaderItems?.slice(4, 7).map((m, idx) => {
+							return (
+								<Link href={m?.path} key={idx}>
+									<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
+								</Link>
+							);
+						})}
+					</div>
+
 					<button
 						type="button"
 						onClick={() => setIsNavShown(!isNavShown)}

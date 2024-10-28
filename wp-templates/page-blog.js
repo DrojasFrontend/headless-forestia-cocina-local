@@ -97,6 +97,7 @@ export default function BlogPage(props) {
 	const siteSeo = props.data.page.seo;
 	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
+	const headerMenu = props?.data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const mostrarCarusel = props?.data?.page?.paginaBlog?.mostrarcarusel ?? "";
@@ -144,7 +145,13 @@ export default function BlogPage(props) {
 	return (
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
-			<HeaderWhite isNavShown={isNavShown} setIsNavShown={setIsNavShown} />
+			<HeaderWhite
+				title={siteSeo?.title}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
+			/>
 			<Main
 				menuItems={primaryMenu}
 				isNavShown={isNavShown}
@@ -175,7 +182,7 @@ export default function BlogPage(props) {
 								))}
 						</ul>
 					</div>
-					<CardsGridThreeCaruselBlog data={posts}/>
+					<CardsGridThreeCaruselBlog data={posts} />
 					<Container>
 						<h2 className="heading--40 color--primary">Descubrir artículos</h2>
 						<div className="CardsPost__grid">
@@ -241,6 +248,7 @@ BlogPage.variables = ({ databaseId }, ctx) => {
 	return {
 		databaseId,
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		menuHeaderLocation: MENUS.HEADER_LOCATION,
 		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 		asPreview: ctx?.asPreview,
@@ -254,6 +262,7 @@ BlogPage.query = gql`
 	query GetPageData(
 		$databaseId: ID!
 		$headerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 		$asPreview: Boolean = false
@@ -309,6 +318,11 @@ BlogPage.query = gql`
 			}
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}

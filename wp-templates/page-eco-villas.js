@@ -12,33 +12,41 @@ export default function Component(props) {
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
-	const siteSeo = props.data.pageBy.seo
+	const siteSeo = props.data.pageBy.seo;
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
-	
+
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
+	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
-  const grupocarusel = props?.data?.pageBy?.paginaEcoVillas?.grupocarusel ?? [];
-  const grupoTexto = props?.data?.pageBy?.paginaEcoVillas?.grupoTexto ?? [];
+	const grupocarusel = props?.data?.pageBy?.paginaEcoVillas?.grupocarusel ?? [];
+	const grupoTexto = props?.data?.pageBy?.paginaEcoVillas?.grupoTexto ?? [];
 	const [isNavShown, setIsNavShown] = useState(false);
 	return (
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
 			/>
 			<Main
 				menuItems={primaryMenu}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-        <HeroCarusel data={grupocarusel} />
-        <TextImage data={grupoTexto}/>
+				<HeroCarusel data={grupocarusel} />
+				<TextImage data={grupoTexto} />
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
@@ -48,8 +56,9 @@ Component.query = gql`
 	${NavigationMenu.fragments.entry}
 	query GetPageData(
 		$headerLocation: MenuLocationEnum
-		$footerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
+		$footerLocation: MenuLocationEnum
 	) {
 		generalSettings {
 			...BlogInfoFragment
@@ -88,6 +97,11 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
 		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
 			nodes {
 				...NavigationMenuItemFragment
@@ -98,7 +112,7 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
-    pageBy(uri: "/eco-villas") {
+		pageBy(uri: "/eco-villas") {
 			seo {
 				title
 				metaDesc
@@ -107,55 +121,55 @@ Component.query = gql`
 					mediaItemUrl
 				}
 			}
-      paginaEcoVillas {
-        grupocarusel {
-          slides {
-            titulo
-            descripcion
-            imagen {
-              mediaItemUrl
-              altText
-              title
-            }
-            cta {
-              target
-              title
-              url
-            }
-          }
-        }
-        grupoTexto {
-          items {
-            estilo
-            titulo
-            descripcion
-            imagen {
-              mediaItemUrl
-              altText
-              title
-            }
-            cta {
-              target
-              title
-              url
-            }
-            items {
-              titulo
+			paginaEcoVillas {
+				grupocarusel {
+					slides {
+						titulo
+						descripcion
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+						cta {
+							target
+							title
+							url
+						}
+					}
+				}
+				grupoTexto {
+					items {
+						estilo
+						titulo
+						descripcion
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+						cta {
+							target
+							title
+							url
+						}
+						items {
+							titulo
 							icono {
 								mediaItemUrl
 							}
-            }
-          }
-        }
-      }
-    }
-		
+						}
+					}
+				}
+			}
+		}
 	}
 `;
 
 Component.variables = () => {
 	return {
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		menuHeaderLocation: MENUS.HEADER_LOCATION,
 		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 	};

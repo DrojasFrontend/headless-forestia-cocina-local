@@ -13,10 +13,6 @@ import { Container } from "../../../Layout/Container";
 const HeroCarusel = ({ data }) => {
 	const { slides } = data;
 
-	if (!slides.length === 0) {
-		return <p>No hay slides disponibles.</p>;
-	}
-
 	var settings = {
 		dots: true,
 		arrows: false,
@@ -66,10 +62,14 @@ const HeroCarusel = ({ data }) => {
 													{slide?.titulo}
 												</h2>
 											)}
-											<p
-												className="heading--16 color--white"
-												dangerouslySetInnerHTML={{ __html: slide?.descripcion }}
-											/>
+											{slide?.descripcion && (
+												<div
+													className="heading--16 color--white"
+													dangerouslySetInnerHTML={{
+														__html: slide?.descripcion,
+													}}
+												/>
+											)}
 											<span className="space space--10"></span>
 
 											{slide?.cta && (

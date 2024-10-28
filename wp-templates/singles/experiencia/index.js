@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { gql } from "@apollo/client";
 import * as MENUS from "../../../constants/menus";
-import {
-	BlogInfoFragment,
-} from "../../../fragments/GeneralSettings";
+import { BlogInfoFragment } from "../../../fragments/GeneralSettings";
 import { SEO, NavigationMenu, Main, Footer } from "../../../components";
 
 import { HeaderWhite } from "../../../components/UI/Header/HeaderWhite";
@@ -19,10 +17,11 @@ export default function Component(props, pageProps) {
 
 	const siteSeo = props?.data?.experiencia?.seo;
 
+	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
+	const headerMenu = props?.data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
-	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
 
 	const experiencia = props?.data?.experiencia ?? [];
 	const grupoTexto = props?.data?.experiencia?.postInterna?.grupotexto ?? [];
@@ -33,8 +32,11 @@ export default function Component(props, pageProps) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
 			/>
 			<Main
 				menuItems={primaryMenu}
@@ -48,7 +50,11 @@ export default function Component(props, pageProps) {
 					heading="Experiencias más populares"
 				/>
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
@@ -57,6 +63,7 @@ Component.variables = ({ databaseId }, ctx) => {
 	return {
 		databaseId,
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		menuHeaderLocation: MENUS.HEADER_LOCATION,
 		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 		asPreview: ctx?.asPreview,
@@ -69,6 +76,7 @@ Component.query = gql`
 	query GetPageData(
 		$databaseId: ID!
 		$headerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 		$asPreview: Boolean = false
@@ -77,6 +85,11 @@ Component.query = gql`
 			...BlogInfoFragment
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}

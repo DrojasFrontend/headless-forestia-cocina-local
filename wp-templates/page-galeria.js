@@ -13,10 +13,11 @@ export default function Component(props, pageProps) {
 		variables: Component.variables(),
 	});
 
-	const siteSeo = props.data.pageBy.seo
+	const siteSeo = props.data.pageBy.seo;
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
+	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
@@ -32,8 +33,11 @@ export default function Component(props, pageProps) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
 			/>
 			<Main
 				menuItems={primaryMenu}
@@ -43,7 +47,11 @@ export default function Component(props, pageProps) {
 				{mostrarCarusel && <HeroCarusel data={grupoCarusel} />}
 				{mostrarGaleria && <Gallery data={grupoGaleria} />}
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
@@ -53,6 +61,7 @@ Component.query = gql`
 	${NavigationMenu.fragments.entry}
 	query GetPageData(
 		$headerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 	) {
@@ -89,6 +98,11 @@ Component.query = gql`
 			}
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}
@@ -149,6 +163,7 @@ Component.query = gql`
 Component.variables = () => {
 	return {
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		menuHeaderLocation: MENUS.HEADER_LOCATION,
 		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 	};
