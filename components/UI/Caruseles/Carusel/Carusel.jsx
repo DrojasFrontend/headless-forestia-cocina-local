@@ -42,15 +42,11 @@ const Carusel = ({ data }) => {
 		],
 	};
 
-	if (!galeria.length === 0) {
-		return <p>No hay galeria disponibles.</p>;
-	}
-
 	return (
 		<section>
 			<div className={cx("component")}>
 				<Slider {...settings}>
-					{galeria.map((img, index) => (
+					{galeria?.map((img, index) => (
 						<div key={index} className={cx(["img"])}>
 							<Image
 								src={img?.mediaItemUrl}

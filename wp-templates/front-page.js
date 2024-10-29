@@ -130,7 +130,7 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
-		pageBy(uri: "/restaurante") {
+		pageBy(uri: "/") {
 			seo {
 				title
 				metaDesc

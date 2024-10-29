@@ -17,7 +17,7 @@ import { HeroCaruselPosts } from "../components/UI/Heros/HeroCaruselPosts";
 import { CardsGridThreeCaruselBlog } from "../components/UI/Cards/CardsGridThreeCaruselBlog";
 import { CardPost } from "../components/UI/Cards/CardPost";
 
-import LogoGreen from "/public/img/logo-green-casaselvaggio.svg";
+import LogoGreen from "/public/img/logo-green-florestia.png";
 
 const GET_POSTS = gql`
 	query GetPosts($first: Int!, $after: String) {

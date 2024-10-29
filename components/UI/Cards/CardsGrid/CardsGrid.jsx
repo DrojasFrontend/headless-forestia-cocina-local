@@ -44,10 +44,6 @@ const CardGrid = ({ data, className }) => {
 		],
 	};
 
-	if (!targetas.length === 0) {
-		return <p>No hay tarjetas disponibles.</p>;
-	}
-
 	return (
 		<section className="CardsGrid">
 			<div className={cx("component")}>
@@ -64,7 +60,7 @@ const CardGrid = ({ data, className }) => {
 				</Container>
 				<div className="container--slick">
 					<Slider {...settings}>
-						{targetas.map((targeta, index) => (
+						{targetas?.map((targeta, index) => (
 							<div key={index} className={cx(["card"])}>
 								<Image
 									src={targeta?.imagen?.mediaItemUrl}

@@ -10,8 +10,8 @@ let cx = className.bind(styles);
 import { Container } from "../../../Layout/Container";
 import IconMenu from "../../../SVG/IconMenu";
 
-import LogoDefault from "/public/img/logocasaselvaggio.svg";
-import LogoGreen from "/public/img/logo-green-casaselvaggio.svg";
+import LogoDefault from "/public/img/florestia.png";
+import LogoGreen from "/public/img/logo-green-florestia.png";
 
 export default function Header({
 	title,
