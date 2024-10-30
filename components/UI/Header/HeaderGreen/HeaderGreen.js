@@ -10,7 +10,8 @@ let cx = className.bind(styles);
 import { Container } from "../../../Layout/Container";
 import IconMenu from "../../../SVG/IconMenu";
 
-import LogoGreen from "/public/img/logo-green-casaselvaggio.svg";
+import LogoDefault from "/public/img/logo-white-forestia-cocina-local.svg";
+import LogoGreen from "/public/img/logo-green-forestia-cocina-local.svg";
 
 export default function HeaderGreen({
 	title,
@@ -53,7 +54,7 @@ export default function HeaderGreen({
 					<div className={cx(["logo"])}>
 						<Link href="/">
 							<a>
-								<Image src={LogoGreen} alt={title} title="logo" />
+								<Image src={LogoGreen} width={300} height={80} alt={title} title="logo" />
 							</a>
 						</Link>
 					</div>

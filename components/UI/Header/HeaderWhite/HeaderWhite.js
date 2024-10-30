@@ -10,8 +10,8 @@ let cx = className.bind(styles);
 import { Container } from "../../../Layout/Container";
 import IconMenu from "../../../SVG/IconMenu";
 
-import LogoDefault from "/public/img/florestia.png";
-import LogoGreen from "/public/img/logo-green-florestia.png";
+import LogoDefault from "/public/img/logo-white-forestia-cocina-local.svg";
+import LogoGreen from "/public/img/logo-green-forestia-cocina-local.svg";
 
 export default function Header({
 	title,
@@ -57,18 +57,18 @@ export default function Header({
 									<Image
 										src={LogoDefault}
 										alt={title}
-										width={120}
-										height={53}
-										title="logo casaselvaggio"
+										width={180}
+										height={50}
+										title="logo forestia white"
 									/>
 								</span>
 								<span className={cx("mobile")}>
 									<Image
 										src={LogoGreen}
 										alt={title}
-										width={120}
-										height={53}
-										title="logo casaselvaggio"
+										width={180}
+										height={70}
+										title="logo forestia green"
 									/>
 								</span>
 							</a>

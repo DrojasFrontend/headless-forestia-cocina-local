@@ -49,6 +49,8 @@
 
 	a {
 		position: relative;
+		display: grid;
+		place-content: center;
 	}
 }
 
@@ -72,7 +74,7 @@
 
 .mobile {
 	position: absolute;
-	top: 0;
+	top: -10px;
 	left: 0;
 	opacity: 0;
 }
