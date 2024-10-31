@@ -84,7 +84,7 @@ export default function BlogPage(props) {
 					alt="Logo casa selvaggio"
 					width={120}
 					height={53}
-					title="logo casaselvaggio"
+					title="logo Forestia cocina local"
 				/>
 			</div>
 		);

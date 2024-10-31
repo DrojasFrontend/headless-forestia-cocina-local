@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import styles from "./Footer.module.scss";
 let cx = classNames.bind(styles);
 
-import LogoDefault from "/public/img/logocasaselvaggio.svg";
+import LogoDefault from "/public/img/logo-white-forestia-cocina-local.svg";
 
 import { Container } from "../../Layout/Container";
 import IconInstagram from "../../SVG/IconInstagram";
@@ -31,11 +31,11 @@ export default function Footer({
 							<Link href="/">
 								<a aria-label="Ir a la página de inicio">
 									<Image
-										src={Logo}
+										src={LogoDefault}
 										width={242}
 										height={105}
-										alt="Logotipo de Casaselvaggio Hotel Campestre"
-										title="Casaselvaggio Hotel Campestre - Relax y naturaleza en un entorno rural"
+										alt="Logotipo de Forestia cocina local Hotel Campestre"
+										title="Forestia cocina local Hotel Campestre - Relax y naturaleza en un entorno rural"
 									/>
 								</a>
 							</Link>
@@ -74,7 +74,7 @@ export default function Footer({
 											href={social?.link?.url}
 											target={social?.link?.target}
 										>
-											<a aria-label="Enlace a Instagram de Casaselvaggio">
+											<a aria-label="Enlace a Instagram de Forestia cocina local">
 												<Image
 													priority
 													src={social?.icon?.mediaItemUrl}

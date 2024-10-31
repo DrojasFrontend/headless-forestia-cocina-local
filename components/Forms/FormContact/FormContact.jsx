@@ -139,7 +139,7 @@ const FormContact = () => {
 									<span>
 										<IconWorld />
 									</span>
-									casaselvaggio.com
+									forestiacocinalocal.com
 								</a>
 							</Link>
 							<div className={cx("social")}>
