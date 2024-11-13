@@ -94,7 +94,6 @@ export default function Header({
 						className={cx(["nav-toggle", "color--white"])}
 					>
 						<IconMenu />
-						MENÚ
 					</button>
 				</div>
 			</Container>

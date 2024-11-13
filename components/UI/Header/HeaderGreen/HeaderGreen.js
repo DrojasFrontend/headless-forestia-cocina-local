@@ -78,7 +78,6 @@ export default function HeaderGreen({
 						className={cx(["nav-toggle", "color--default"])}
 					>
 						<IconMenu />
-						MENÚ
 					</button>
 				</div>
 			</Container>
