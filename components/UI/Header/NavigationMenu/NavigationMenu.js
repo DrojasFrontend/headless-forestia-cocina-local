@@ -70,12 +70,18 @@ export default function NavigationMenu({
 				})}
 
 				<li>
-					<button
+					<Link href="/ubicacion">
+						<a className={cx("location")}>
+							<IconLocation />
+							<span>Forestia Cocina Local</span>
+						</a>
+					</Link>
+					{/* <button
 						onClick={navigateToSelvaggio}
 						className={cx("location")}>
 						<IconLocation />
 						<span>Forestia Cocina Local</span>
-					</button>
+					</button> */}
 				</li>
 			</ul>
 		);
