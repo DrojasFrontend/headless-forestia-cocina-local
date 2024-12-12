@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-
 import className from "classnames/bind";
 import styles from "./Map.module.scss";
 let cx = className.bind(styles);
@@ -23,6 +22,11 @@ export default function RouteMap() {
 		"Tinjacá, Boyacá, Colombia",
 		"5.538401792005162, -73.6330853982385",
 	];
+
+	// Detectar dispositivo iOS
+	const isIOS = () => {
+		return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+	};
 
 	useEffect(() => {
 		const loadGoogleMaps = () => {
@@ -51,7 +55,6 @@ export default function RouteMap() {
 		setDirectionsService(directionsService);
 		setDirectionsRenderer(directionsRenderer);
 
-		// Mostrar ruta inicial inmediatamente
 		const waypts = waypoints.map((location) => ({
 			location: location,
 			stopover: true,
@@ -77,19 +80,21 @@ export default function RouteMap() {
 			navigator.geolocation.getCurrentPosition(
 				(position) => {
 					const origin = `${position.coords.latitude},${position.coords.longitude}`;
-					const destination = encodeURIComponent(DESTINATION);
-					const waypointsStr = waypoints
-						.map((wp) => encodeURIComponent(wp))
-						.join("|");
+					const destination = DESTINATION;
+					const waypointsStr = waypoints.join("|");
 
 					let url;
-					if (platform === "google") {
+					if (isIOS()) {
+						// Soporte específico para iOS
+						url = `maps://maps.apple.com/maps?saddr=${origin}&daddr=${destination}&dirflg=d`;
+					} else if (platform === "google") {
 						url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${waypointsStr}&travelmode=driving`;
 					} else {
 						url = `https://waze.com/ul?ll=${destination}&navigate=yes`;
 					}
 
-					window.open(url, "_blank");
+					// Usar location.href para mejor compatibilidad
+					window.location.href = url;
 					setIsLoading(false);
 				},
 				(error) => {
@@ -101,29 +106,18 @@ export default function RouteMap() {
 	};
 
 	return (
-		<>
-			<div className={cx("map__wrapper")}>
-				<Container>
-					{/* <div id="map" className={cx("map")}></div> */}
-					<div className={cx("grid")}>
-						<button
-							className="button button--primary"
-							onClick={() => handleNavigation("google")}
-							disabled={isLoading}
-						>
-							{isLoading ? "Cargando..." : "Abrir ruta"}
-						</button>
-
-						{/* <button
-							className="button button--primary"
-							onClick={() => handleNavigation("waze")}
-							disabled={isLoading}
-						>
-							{isLoading ? "Cargando..." : "Abrir en Waze"}
-						</button> */}
-					</div>
-				</Container>
-			</div>
-		</>
+		<div className={cx("map__wrapper")}>
+			<Container>
+				<div className={cx("grid")}>
+					<button
+						className="button button--primary"
+						onClick={() => handleNavigation("google")}
+						disabled={isLoading}
+					>
+						{isLoading ? "Cargando..." : "Abrir ruta"}
+					</button>
+				</div>
+			</Container>
+		</div>
 	);
 }
