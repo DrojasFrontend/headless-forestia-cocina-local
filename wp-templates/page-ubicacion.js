@@ -39,7 +39,7 @@ export default function Component(props) {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				<HeroImage data={grupoHero} />
+				<HeroImage data={grupoHero} className="ubicacion" />
         <RouteMap/>
 			</Main>
 			<Footer

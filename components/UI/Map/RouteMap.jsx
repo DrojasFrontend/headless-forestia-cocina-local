@@ -104,14 +104,14 @@ export default function RouteMap() {
 		<>
 			<div className={cx("map__wrapper")}>
 				<Container>
-					<div id="map" className={cx("map")}></div>
+					{/* <div id="map" className={cx("map")}></div> */}
 					<div className={cx("grid")}>
 						<button
 							className="button button--primary"
 							onClick={() => handleNavigation("google")}
 							disabled={isLoading}
 						>
-							{isLoading ? "Cargando..." : "Abrir en Google Maps"}
+							{isLoading ? "Cargando..." : "Abrir ruta"}
 						</button>
 
 						{/* <button

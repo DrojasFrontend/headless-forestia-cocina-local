@@ -44,4 +44,10 @@
   height: 100%;
   text-align: center;
   z-index: 1;
+
+  &.ubicacion {
+    max-width: rem(800);
+    margin: 0 auto;
+    padding: 0 rem(20);
+  }
 }

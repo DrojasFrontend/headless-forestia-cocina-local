@@ -4,7 +4,7 @@ import className from "classnames/bind";
 import styles from "./HeroImage.module.scss";
 let cx = className.bind(styles);
 
-const HeroImage = ({data}) => {
+const HeroImage = ({data, className }) => {
 	const {titulo, imagen } = data;
 
 	return (
@@ -18,7 +18,7 @@ const HeroImage = ({data}) => {
 					alt={imagen.altText}
 					title={imagen.title}
 				/>
-				<h1 className={cx(["heading", "heading--54", "color--white"])}>
+				<h1 className={cx("heading", "heading--54", "color--white", className)}>
 					{titulo}
 				</h1>
 			</div>
