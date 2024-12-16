@@ -21,7 +21,6 @@ export default function MyApp({ Component, pageProps }) {
 			TagManager.initialize({ gtmId }); // Inicializa GTM
 		}
 	}, []);
-
 	return (
 		<ApolloProvider client={client}>
 			<FaustProvider pageProps={pageProps}>
