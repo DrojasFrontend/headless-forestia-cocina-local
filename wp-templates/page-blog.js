@@ -60,7 +60,7 @@ const GET_POSTS = gql`
 	}
 `;
 
-const POSTS_PER_PAGE = 6;
+const POSTS_PER_PAGE = 100;
 
 export default function BlogPage(props) {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -192,7 +192,7 @@ export default function BlogPage(props) {
 						</div>
 
 						{/* Paginación */}
-						<div className="pagination">
+						{/* <div className="pagination">
 							{currentPage > 1 && (
 								<button
 									className="pagination__prev"
@@ -231,7 +231,7 @@ export default function BlogPage(props) {
 									Siguiente
 								</button>
 							)}
-						</div>
+						</div> */}
 					</Container>
 				</section>
 			</Main>
