@@ -21,14 +21,14 @@ export default function Component(props) {
 	const headerMenu = props?.data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
-  const categories = props?.data?.categories?.edges ?? [];
+	const categories = props?.data?.categories?.edges ?? [];
 	const posts = props?.data?.nodeByUri?.posts?.edges;
 
 	const [isNavShown, setIsNavShown] = useState(false);
 
 	return (
 		<>
-			
+
 			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
@@ -126,6 +126,13 @@ Component.query = gql`
 							author {
 								node {
 									name
+								}
+							}
+							internaBlog {
+								imgen {
+									mediaItemUrl
+									altText
+									title
 								}
 							}
 						}

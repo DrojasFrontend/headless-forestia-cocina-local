@@ -82,8 +82,8 @@ export default function BlogPage(props) {
 				<Image
 					src={LogoGreen}
 					alt="Logo casa selvaggio"
-					width={120}
-					height={53}
+					width={180}
+					height={70}
 					title="logo Forestia cocina local"
 				/>
 			</div>
@@ -108,6 +108,8 @@ export default function BlogPage(props) {
 
 	const totalPosts = 6;
 	const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+	console.log(posts);
 
 	const handlePageClick = (pageNumber) => {
 		setCurrentPage(pageNumber);

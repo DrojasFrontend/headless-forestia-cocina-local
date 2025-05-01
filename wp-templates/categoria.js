@@ -126,6 +126,13 @@ Component.query = gql`
 									name
 								}
 							}
+							internaBlog {
+								imgen {
+									mediaItemUrl
+									altText
+									title
+								}
+							}
 						}
 					}
 				}
