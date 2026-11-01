@@ -10,15 +10,18 @@ import IconCheck from "../../SVG/IconCheck";
 const ListItem = ({ data }) => {
 	const { titulo, icono } = data;
 	return (
-		<li className={cx("listitem")}>
-			{icono?.mediaItemUrl ? (
+        <li className={cx("listitem")}>
+            {icono?.mediaItemUrl ? (
 				<span>
 					<Image
-            src={icono?.mediaItemUrl}
-            width={40}
-            height={40}
-            alt={titulo}
-          />
+                        src={icono?.mediaItemUrl}
+                        width={40}
+                        height={40}
+                        alt={titulo}
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }} />
 				</span>
 			) : (
 				<span className={cx("icon")}>
@@ -26,9 +29,9 @@ const ListItem = ({ data }) => {
 				</span>
 			)}
 
-			<p className="heading--16 color--primary">{titulo}</p>
-		</li>
-	);
+            <p className="heading--16 color--primary">{titulo}</p>
+        </li>
+    );
 };
 
 export default ListItem;

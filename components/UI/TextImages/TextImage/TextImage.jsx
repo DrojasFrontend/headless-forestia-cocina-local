@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -62,8 +62,8 @@ const TextImage = ({ data }) => {
                     ))}
                 </div>
                 {item?.cta && (
-                  <Link href={item?.cta?.url}>
-                    <a className="button button--primary">{item?.cta.title}</a>
+                  <Link href={item?.cta?.url} className="button button--primary">
+                    {item?.cta.title}
                   </Link>
                 )}
               </div>
@@ -73,13 +73,15 @@ const TextImage = ({ data }) => {
                     <div key={idx} className={cx("slide")}>
                       <Image
                         src={img?.mediaItemUrl}
-                        layout="fill"
                         quality={100}
                         priority
-                        objectFit="cover"
                         alt={img?.altText}
                         title={img?.title}
-                      />
+                        fill
+                        sizes="100vw"
+                        style={{
+                          objectFit: "cover"
+                        }} />
                     </div>
                   ))}
                 </Slider>
@@ -87,26 +89,12 @@ const TextImage = ({ data }) => {
             </div>
           ))}
 
-          {isOpen && currentImages?.length > 0 && (
+          {currentImages?.length > 0 && (
             <Lightbox
-              mainSrc={currentImages[photoIndex]?.mediaItemUrl}
-              nextSrc={
-                currentImages[(photoIndex + 1) % currentImages?.length]?.mediaItemUrl
-              }
-              prevSrc={
-                currentImages[
-                  (photoIndex + currentImages?.length - 1) % currentImages?.length
-                ]?.mediaItemUrl
-              }
-              onCloseRequest={() => setIsOpen(false)}
-              onMovePrevRequest={() =>
-                setPhotoIndex(
-                  (photoIndex + currentImages?.length - 1) % currentImages?.length
-                )
-              }
-              onMoveNextRequest={() =>
-                setPhotoIndex((photoIndex + 1) % currentImages?.length)
-              }
+              open={isOpen}
+              close={() => setIsOpen(false)}
+              index={photoIndex}
+              slides={currentImages.map((imagen) => ({ src: imagen?.mediaItemUrl, alt: imagen?.altText }))}
             />
           )}
         </Container>

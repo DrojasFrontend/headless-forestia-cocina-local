@@ -45,8 +45,8 @@ const CardGrid = ({ data, className }) => {
 	};
 
 	return (
-		<section className="CardsGrid">
-			<div className={cx("component")}>
+        <section className="CardsGrid">
+            <div className={cx("component")}>
 				<Container>
 					<div className={cx(["grid", className])}>
 						<h2 className={cx(["heading", "heading--40", "color--primary"])}>
@@ -63,14 +63,17 @@ const CardGrid = ({ data, className }) => {
 						{targetas?.map((targeta, index) => (
 							<div key={index} className={cx(["card"])}>
 								<Image
-									src={targeta?.imagen?.mediaItemUrl}
-									width={372}
-									height={440}
-									quality={100}
-									sizes="100vw"
-									alt={targeta?.imagen?.altText}
-									title={targeta?.imagen?.title}
-								/>
+                                    src={targeta?.imagen?.mediaItemUrl}
+                                    width={372}
+                                    height={440}
+                                    quality={100}
+                                    alt={targeta?.imagen?.altText}
+                                    title={targeta?.imagen?.title}
+                                    sizes="100vw"
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
 								<div className={cx(["copy"])}>
 									<h3 className="heading--24 color--white">
 										{targeta?.titulo}
@@ -85,16 +88,19 @@ const CardGrid = ({ data, className }) => {
 					</Slider>
 
 					{cta && (
-						<Link href={cta?.url}>
-							<a className="button button--primary button--center" target={cta?.target}>
-								{cta?.title}
-							</a>
-						</Link>
+						<Link
+                            href={cta?.url}
+                            className="button button--primary button--center"
+                            target={cta?.target}>
+
+                            {cta?.title}
+
+                        </Link>
 					)}
 				</div>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardGrid;

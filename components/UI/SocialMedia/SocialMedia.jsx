@@ -15,19 +15,19 @@ const SocialMedia = () => {
   return (
     <>
       <Link className="" href="/">
-        <a><IconInstagram /></a>
+        <IconInstagram />
       </Link>
       <Link className="" href="/">
-        <a><IconFacebook /></a>
+        <IconFacebook />
       </Link>
       <Link className="" href="/">
-        <a><IconYoutube /></a>
+        <IconYoutube />
       </Link>
       <Link className="" href="/">
-        <a><IconWaze /></a>
+        <IconWaze />
       </Link>
       <Link className="" href="/">
-        <a><IconWhatsapp /></a>
+        <IconWhatsapp />
       </Link>
     </>
   );

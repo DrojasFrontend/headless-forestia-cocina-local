@@ -23,20 +23,20 @@ const HeroCarusel = ({ data }) => {
 		slidesToScroll: 1,
 	};
 	return (
-		<section className="HeroCarusel">
-			<div className={cx(["component"])}>
+        <section className="HeroCarusel">
+            <div className={cx(["component"])}>
 				<Slider {...settings}>
 					{slides.map((slide, index) => (
 						<div key={index}>
 							<div className={cx("bckg")}>
 								<Image
-									src={slide?.imagen?.mediaItemUrl}
-									layout="fill"
-									quality={100}
-									priority
-									alt={slide?.imagen?.altText}
-									title={slide?.imagen?.title}
-								/>
+                                    src={slide?.imagen?.mediaItemUrl}
+                                    quality={100}
+                                    priority
+                                    alt={slide?.imagen?.altText}
+                                    title={slide?.imagen?.title}
+                                    fill
+                                    sizes="100vw" />
 
 								<div className={cx("content")}>
 									<Container>
@@ -74,13 +74,13 @@ const HeroCarusel = ({ data }) => {
 
 											{slide?.cta && (
 												<Link
-													href={slide?.cta?.url}
-													target={slide?.cta?.target}
-												>
-													<a className="button button--white">
-														{slide?.cta?.title}
-													</a>
-												</Link>
+                                                    href={slide?.cta?.url}
+                                                    target={slide?.cta?.target}
+                                                    className="button button--white">
+
+                                                    {slide?.cta?.title}
+
+                                                </Link>
 											)}
 										</div>
 									</Container>
@@ -90,8 +90,8 @@ const HeroCarusel = ({ data }) => {
 					))}
 				</Slider>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default HeroCarusel;

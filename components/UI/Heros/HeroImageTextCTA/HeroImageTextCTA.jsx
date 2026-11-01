@@ -14,36 +14,36 @@ import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
 const HeroImageText = ({ data }) => {
 	const { title, excerpt, postInterna, titulo, descripcion, cta, imagen } = data;
 	return (
-		<section className="HeroImageText">
-			<div className={cx(["component"])}>
+        <section className="HeroImageText">
+            <div className={cx(["component"])}>
 				<div className={cx("bckg")}>
 					{postInterna?.grupobanner?.imagen ? (
 						<Image
-							src={postInterna?.grupobanner?.imagen?.mediaItemUrl}
-							layout="fill"
-							quality={100}
-							priority
-							alt={postInterna?.grupobanner?.imagen?.altText}
-							title={postInterna?.grupobanner?.imagen?.title}
-						/>
+                            src={postInterna?.grupobanner?.imagen?.mediaItemUrl}
+                            quality={100}
+                            priority
+                            alt={postInterna?.grupobanner?.imagen?.altText}
+                            title={postInterna?.grupobanner?.imagen?.title}
+                            fill
+                            sizes="100vw" />
 					) :  imagen?.mediaItemUrl ? (
 						<Image
-							src={imagen?.mediaItemUrl}
-							layout="fill"
-							quality={100}
-							priority
-							alt={imagen?.altText}
-							title={imagen?.title}
-						/>
+                            src={imagen?.mediaItemUrl}
+                            quality={100}
+                            priority
+                            alt={imagen?.altText}
+                            title={imagen?.title}
+                            fill
+                            sizes="100vw" />
 					) : (
 						<Image
-							src={ImageNotAvailable}
-							layout="fill"
-							quality={100}
-							priority
-							alt="Imagen no disponible"
-							title="no disponible"
-						/>
+                            src={ImageNotAvailable}
+                            quality={100}
+                            priority
+                            alt="Imagen no disponible"
+                            title="no disponible"
+                            fill
+                            sizes="100vw" />
 					)}
 
 					<div className={cx("content")}>
@@ -79,16 +79,16 @@ const HeroImageText = ({ data }) => {
 
 								{postInterna?.grupobanner?.cta ? (
 									<Link
-										href={postInterna?.grupobanner?.cta?.url}
-										target={postInterna?.grupobanner?.cta?.target}
-									>
-										<a className="button button--white">
-											{postInterna?.grupobanner?.cta?.title}
-										</a>
-									</Link>
+                                        href={postInterna?.grupobanner?.cta?.url}
+                                        target={postInterna?.grupobanner?.cta?.target}
+                                        className="button button--white">
+
+                                        {postInterna?.grupobanner?.cta?.title}
+
+                                    </Link>
 								) : (
-									<Link href={cta?.url} target={cta?.target}>
-										<a className="button button--white">{cta?.title}</a>
+									<Link href={cta?.url} target={cta?.target} className="button button--white">
+										{cta?.title}
 									</Link>
 								)}
 							</div>
@@ -96,8 +96,8 @@ const HeroImageText = ({ data }) => {
 					</div>
 				</div>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default HeroImageText;

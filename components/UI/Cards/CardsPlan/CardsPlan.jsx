@@ -16,8 +16,8 @@ const CardsPlan = ({data, detail}) => {
 	}
 
 	return (
-		<section className="CardsPlanes">
-			<div className={cx("component")}>
+        <section className="CardsPlanes">
+            <div className={cx("component")}>
 				<Container>
 					<div className={cx(["title", className])}>
 						<h2 className={cx(["heading", "heading--40", "color--primary"])}>
@@ -31,34 +31,37 @@ const CardsPlan = ({data, detail}) => {
 
 					<div className={cx("grid")}>
 						{data.map((targeta, index) => (
-							<Link key={index} href={targeta?.uri}>
-								<a className={cx(["card"])}>
-									<Image
-										src={targeta?.featuredImage?.node?.mediaItemUrl}
-										width={372}
-										height={440}
-										quality={100}
-										priority
-										sizes="100vw"
-										alt={targeta?.featuredImage?.node?.altText}
-										title={targeta?.featuredImage?.node?.title}
-									/>
-									<div className={cx(["copy"])}>
-										<h3 className="heading--24 color--white">
-											{targeta?.title}
-										</h3>
-										<div
-											className="heading--16 color--white"
-											dangerouslySetInnerHTML={{
-												__html: sanitize(targeta?.excerpt),
-											}}
-										/>
-										<span className={cx("moreinfo")}>
-											<span className={cx(["button", "button button--white"])}>Ver plan</span>
-										</span>
-									</div>
-								</a>
-							</Link>
+							<Link key={index} href={targeta?.uri} className={cx(["card"])}>
+
+                                <Image
+                                    src={targeta?.featuredImage?.node?.mediaItemUrl}
+                                    width={372}
+                                    height={440}
+                                    quality={100}
+                                    priority
+                                    alt={targeta?.featuredImage?.node?.altText}
+                                    title={targeta?.featuredImage?.node?.title}
+                                    sizes="100vw"
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
+                                <div className={cx(["copy"])}>
+                                    <h3 className="heading--24 color--white">
+                                        {targeta?.title}
+                                    </h3>
+                                    <div
+                                        className="heading--16 color--white"
+                                        dangerouslySetInnerHTML={{
+                                            __html: sanitize(targeta?.excerpt),
+                                        }}
+                                    />
+                                    <span className={cx("moreinfo")}>
+                                        <span className={cx(["button", "button button--white"])}>Ver plan</span>
+                                    </span>
+                                </div>
+
+                            </Link>
 						))}
 
 						{/* {cta && (
@@ -74,8 +77,8 @@ const CardsPlan = ({data, detail}) => {
 					</div>
 				</Container>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardsPlan;

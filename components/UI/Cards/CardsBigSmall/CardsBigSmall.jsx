@@ -16,8 +16,8 @@ const CardsBigSmall = ({ data }) => {
 	}
 
 	return (
-		<section className="CardsBigSmall">
-			<div className={cx(["component"])}>
+        <section className="CardsBigSmall">
+            <div className={cx(["component"])}>
 				<Container>
 					<div className="container">
 						<div className={cx(["title"])}>
@@ -33,14 +33,15 @@ const CardsBigSmall = ({ data }) => {
 							{targetas.map((targeta, index) => (
 								<div key={index} className={cx("card", { "gridColumn": targeta.columnas === 2 })} >
 									<Image
-										layout="fill"
-										src={targeta?.imagen?.mediaItemUrl}
-										quality={100}
-										sizes="100vw"
-										objectFit="cover"
-										alt={targeta?.imagen?.altText}
-										title={targeta?.imagen?.title}
-									/>
+                                        src={targeta?.imagen?.mediaItemUrl}
+                                        quality={100}
+                                        alt={targeta?.imagen?.altText}
+                                        title={targeta?.imagen?.title}
+                                        fill
+                                        sizes="100vw"
+                                        style={{
+                                            objectFit: "cover"
+                                        }} />
 
 									<div className={cx(["copy"])}>
 										<h3
@@ -49,11 +50,11 @@ const CardsBigSmall = ({ data }) => {
 											{targeta?.titulo}
 										</h3>
 										{targeta?.cta?.url && (
-											<Link href={targeta?.cta?.url}>
-												<a className="button button--white">
-													{targeta?.cta?.title}
-												</a>
-											</Link>
+											<Link href={targeta?.cta?.url} className="button button--white">
+
+                                                {targeta?.cta?.title}
+
+                                            </Link>
 										)}
 									</div>
 								</div>
@@ -62,8 +63,8 @@ const CardsBigSmall = ({ data }) => {
 					</div>
 				</Container>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardsBigSmall;

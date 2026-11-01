@@ -48,8 +48,8 @@ const CardsMasonry = ({ data }) => {
 		return <p>No hay tarjetas disponibles.</p>;
 	}
 	return (
-		<section className="sectionCardsMasonry">
-			<div className={cx("component")}>
+        <section className="sectionCardsMasonry">
+            <div className={cx("component")}>
 				<Container>
 					<div className={cx("title")}>
 						{titulo && <h2 className="heading--40 color--primary">{titulo}</h2>}
@@ -70,16 +70,19 @@ const CardsMasonry = ({ data }) => {
 											(index === 0 || index === 1) && (
 												<div key={index} className={cx("card")}>
 													<Image
-														src={targeta?.imagen?.mediaItemUrl}
-														width={372}
-														height={500}
-														quality={100}
-														priority
-														sizes="100vw"
-														objectFit="cover"
-														alt={targeta?.imagen?.altText}
-														title={targeta?.imagen?.title}
-													/>
+                                                        src={targeta?.imagen?.mediaItemUrl}
+                                                        width={372}
+                                                        height={500}
+                                                        quality={100}
+                                                        priority
+                                                        alt={targeta?.imagen?.altText}
+                                                        title={targeta?.imagen?.title}
+                                                        sizes="100vw"
+                                                        style={{
+                                                            maxWidth: "100%",
+                                                            height: "auto",
+                                                            objectFit: "cover"
+                                                        }} />
 													{targeta.titulo && (
 														<h3
 															className={cx([
@@ -109,11 +112,11 @@ const CardsMasonry = ({ data }) => {
 									</div>
 									<div className="">
 										{cta && (
-											<Link href={cta?.url}>
-												<a className="button button--white" target={cta?.target}>
-													{cta?.title}
-												</a>
-											</Link>
+											<Link href={cta?.url} className="button button--white" target={cta?.target}>
+
+                                                {cta?.title}
+
+                                            </Link>
 										)}
 									</div>
 								</div>
@@ -124,16 +127,19 @@ const CardsMasonry = ({ data }) => {
 										(index === 2 || index === 3) && (
 											<div key={index} className={cx(["card", "card--medium"])}>
 												<Image
-													src={targeta?.imagen?.mediaItemUrl}
-													width={350}
-													height={350}
-													quality={100}
-													priority
-													sizes="100vw"
-													objectFit="cover"
-													alt={targeta?.imagen?.altText}
-													title={targeta?.imagen?.title}
-												/>
+                                                    src={targeta?.imagen?.mediaItemUrl}
+                                                    width={350}
+                                                    height={350}
+                                                    quality={100}
+                                                    priority
+                                                    alt={targeta?.imagen?.altText}
+                                                    title={targeta?.imagen?.title}
+                                                    sizes="100vw"
+                                                    style={{
+                                                        maxWidth: "100%",
+                                                        height: "auto",
+                                                        objectFit: "cover"
+                                                    }} />
 												<h3
 													className={cx([
 														"card-title",
@@ -157,16 +163,19 @@ const CardsMasonry = ({ data }) => {
 								<div key={index}>
 									<div className={cx("card")}>
 										<Image
-											src={targeta?.imagen?.mediaItemUrl}
-											width={350}
-											height={350}
-											quality={100}
-											priority
-											sizes="100vw"
-											objectFit="cover"
-											alt={targeta?.imagen?.altText}
-											title={targeta?.imagen?.title}
-										/>
+                                            src={targeta?.imagen?.mediaItemUrl}
+                                            width={350}
+                                            height={350}
+                                            quality={100}
+                                            priority
+                                            alt={targeta?.imagen?.altText}
+                                            title={targeta?.imagen?.title}
+                                            sizes="100vw"
+                                            style={{
+                                                maxWidth: "100%",
+                                                height: "auto",
+                                                objectFit: "cover"
+                                            }} />
 										<h3
 											className={cx(["card-title", "heading--20 color--white"])}
 										>
@@ -179,8 +188,8 @@ const CardsMasonry = ({ data }) => {
 					</div>
 				</div>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardsMasonry;

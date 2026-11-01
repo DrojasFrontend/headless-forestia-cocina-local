@@ -43,37 +43,40 @@ const Carusel = ({ data }) => {
 	};
 
 	return (
-		<section>
-			<div className={cx("component")}>
+        <section>
+            <div className={cx("component")}>
 				<Slider {...settings}>
 					{galeria?.map((img, index) => (
 						<div key={index} className={cx(["img"])}>
 							<Image
-								src={img?.mediaItemUrl}
-								width={420}
-								height={609}
-								quality={100}
-								priority
-								sizes="100vw"
-								objectFit="cover"
-								alt={img?.altTxt}
-								title={img?.title}
-							/>
+                                src={img?.mediaItemUrl}
+                                width={420}
+                                height={609}
+                                quality={100}
+                                priority
+                                alt={img?.altTxt}
+                                title={img?.title}
+                                sizes="100vw"
+                                style={{
+                                    maxWidth: "100%",
+                                    height: "auto",
+                                    objectFit: "cover"
+                                }} />
 						</div>
 					))}
 				</Slider>
 			</div>
-			{cta?.url && (
+            {cta?.url && (
 				<Link
-					href={cta?.url}
-					target={cta?.target}
-					title={`mas sobre ${cta?.title}`}
-				>
-					<a className="button button--primary button--center">{cta?.title}</a>
+                    href={cta?.url}
+                    target={cta?.target}
+                    title={`mas sobre ${cta?.title}`}
+                    className="button button--primary button--center">
+					{cta?.title}
 				</Link>
 			)}
-		</section>
-	);
+        </section>
+    );
 };
 
 export default Carusel;

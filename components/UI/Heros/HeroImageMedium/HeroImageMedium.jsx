@@ -7,22 +7,22 @@ let cx = className.bind(styles);
 const HeroImageMedium = ({ data }) => {
 	const { titulo, imagen } = data;
 	return (
-		<section className={cx(["component"])}>
-			<div className={cx(["bckg"])}>
+        <section className={cx(["component"])}>
+            <div className={cx(["bckg"])}>
 			<Image
-					src={imagen.mediaItemUrl}
-					layout="fill"
-					quality={100}
-					priority
-					alt={imagen.altText}
-					title={imagen.title}
-				/>
+                src={imagen.mediaItemUrl}
+                quality={100}
+                priority
+                alt={imagen.altText}
+                title={imagen.title}
+                fill
+                sizes="100vw" />
 				<h1 className={cx(["heading", "heading--54", "color--white"])}>
 					{titulo}
 				</h1>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default HeroImageMedium;

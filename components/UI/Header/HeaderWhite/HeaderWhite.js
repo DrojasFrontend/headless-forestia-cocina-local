@@ -37,51 +37,57 @@ export default function Header({
 	const menuClasses = scrolled ? "header-scrolled" : "";
 
 	return (
-		<header className={cx(["component", menuClasses])}>
-			<Container>
+        <header className={cx(["component", menuClasses])}>
+            <Container>
 				<div className={cx(["grid"])}>
 					<div className={cx("left")}>
 						{menuHeaderItems?.slice(0, 3).map((m, idx) => {
 							return (
-								<Link href={m?.path} key={idx}>
-								<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
-								</Link>
-							);
+                                <Link href={m?.path} key={idx} className={cx("link", m?.cssClasses )}>
+                                    {m?.label}
+                                </Link>
+                            );
 						})}
 					</div>
 
 					<div className={cx(["logo"])}>
 						<Link href="/">
-							<a>
-								<span className={cx("desktop")}>
-									<Image
-										src={LogoDefault}
-										alt={title}
-										width={180}
-										height={50}
-										title="logo forestia white"
-									/>
-								</span>
-								<span className={cx("mobile")}>
-									<Image
-										src={LogoGreen}
-										alt={title}
-										width={180}
-										height={70}
-										title="logo forestia green"
-									/>
-								</span>
-							</a>
-						</Link>
+
+                            <span className={cx("desktop")}>
+                                <Image
+                                    src={LogoDefault}
+                                    alt={title}
+                                    width={180}
+                                    height={50}
+                                    title="logo forestia white"
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
+                            </span>
+                            <span className={cx("mobile")}>
+                                <Image
+                                    src={LogoGreen}
+                                    alt={title}
+                                    width={180}
+                                    height={70}
+                                    title="logo forestia green"
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
+                            </span>
+
+                        </Link>
 					</div>
 
 					<div className={cx("right")}>
 						{menuHeaderItems?.slice(3, 6).map((m, idx) => {
 							return (
-								<Link href={m?.path} key={idx}>
-									<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
-								</Link>
-							);
+                                <Link href={m?.path} key={idx} className={cx("link", m?.cssClasses )}>
+                                    {m?.label}
+                                </Link>
+                            );
 						})}
 					</div>
 
@@ -97,6 +103,6 @@ export default function Header({
 					</button>
 				</div>
 			</Container>
-		</header>
-	);
+        </header>
+    );
 }

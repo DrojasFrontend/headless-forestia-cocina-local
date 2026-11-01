@@ -64,8 +64,8 @@ const CardsGridThreeCarusel = ({ data }) => {
 	}
 
 	return (
-		<section className="CardsGridThreeCarusel">
-			<div className={cx("component")}>
+        <section className="CardsGridThreeCarusel">
+            <div className={cx("component")}>
 				<Container>
 					<div className={cx("title")}>
 						<div>
@@ -96,28 +96,32 @@ const CardsGridThreeCarusel = ({ data }) => {
 								<div className={cx("card")}>
 									{item?.imagen?.mediaItemUrl ? (
 										<Image
-											src={item?.imagen?.mediaItemUrl}
-											layout="fill"
-											quality={100}
-											priority
-											sizes="100vw"
-											objectFit="cover"
-											objectPosition="top"
-											alt={item?.imagen?.altText}
-											title={item?.imagen?.title}
-										/>
+                                            src={item?.imagen?.mediaItemUrl}
+                                            quality={100}
+                                            priority
+                                            alt={item?.imagen?.altText}
+                                            title={item?.imagen?.title}
+                                            fill
+                                            sizes="100vw"
+                                            style={{
+                                                objectFit: "cover",
+                                                objectPosition: "top"
+                                            }} />
 									) : (
 										<Image
-											src={ImageNotAvailable}
-											width={372}
-											height={400}
-											quality={100}
-											priority
-											sizes="100vw"
-											objectFit="cover"
-											alt="Imagen no disponible"
-											title="no disponible"
-										/>
+                                            src={ImageNotAvailable}
+                                            width={372}
+                                            height={400}
+                                            quality={100}
+                                            priority
+                                            alt="Imagen no disponible"
+                                            title="no disponible"
+                                            sizes="100vw"
+                                            style={{
+                                                maxWidth: "100%",
+                                                height: "auto",
+                                                objectFit: "cover"
+                                            }} />
 									)}
 								</div>
 								<div className={cx("name")}>
@@ -146,8 +150,8 @@ const CardsGridThreeCarusel = ({ data }) => {
 					</div>
 				</div>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardsGridThreeCarusel;

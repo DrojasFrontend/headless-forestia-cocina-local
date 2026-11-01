@@ -38,34 +38,43 @@ export default function HeaderGreen({
 	const menuClasses = scrolled ? "header-scrolled" : "";
 
 	return (
-		<header className={cx(["component", menuClasses])}>
-			<Container>
+        <header className={cx(["component", menuClasses])}>
+            <Container>
 				<div className={cx(["grid"])}>
 					<div className={cx("left")}>
 						{menuHeaderItems?.slice(0, 3).map((m, idx) => {
 							return (
-								<Link href={m.path} key={idx}>
-									<a className={cx("link", m.cssClasses)}>{m.label}</a>
-								</Link>
-							);
+                                <Link href={m.path} key={idx} className={cx("link", m.cssClasses)}>
+                                    {m.label}
+                                </Link>
+                            );
 						})}
 					</div>
 
 					<div className={cx(["logo"])}>
 						<Link href="/">
-							<a>
-								<Image src={LogoGreen} width={300} height={80} alt={title} title="logo" />
-							</a>
-						</Link>
+
+                            <Image
+                                src={LogoGreen}
+                                width={300}
+                                height={80}
+                                alt={title}
+                                title="logo"
+                                style={{
+                                    maxWidth: "100%",
+                                    height: "auto"
+                                }} />
+
+                        </Link>
 					</div>
 
 					<div className={cx("right")}>
 						{menuHeaderItems?.slice(3, 6).map((m, idx) => {
 							return (
-								<Link href={m.path} key={idx}>
-									<a className={cx("link", m.cssClasses)}>{m.label}</a>
-								</Link>
-							);
+                                <Link href={m.path} key={idx} className={cx("link", m.cssClasses)}>
+                                    {m.label}
+                                </Link>
+                            );
 						})}
 					</div>
 
@@ -81,6 +90,6 @@ export default function HeaderGreen({
 					</button>
 				</div>
 			</Container>
-		</header>
-	);
+        </header>
+    );
 }

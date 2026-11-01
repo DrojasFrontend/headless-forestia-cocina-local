@@ -1,5 +1,4 @@
-import { gql } from '@apollo/client';
-import Image from 'next/image';
+import Image from "next/image";
 export default function FeaturedImage({
   image,
   width,
@@ -26,25 +25,11 @@ export default function FeaturedImage({
         height={height}
         priority={priority}
         {...props}
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
     </figure>
   ) : null;
 }
 
-FeaturedImage.fragments = {
-  entry: gql`
-    fragment FeaturedImageFragment on NodeWithFeaturedImage {
-      featuredImage {
-        node {
-          id
-          sourceUrl
-          altText
-          mediaDetails {
-            width
-            height
-          }
-        }
-      }
-    }
-  `,
-};

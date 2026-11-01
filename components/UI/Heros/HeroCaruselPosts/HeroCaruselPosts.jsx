@@ -26,30 +26,30 @@ const HeroCarusel = ({ data }) => {
 		slidesToScroll: 1,
 	};
 	return (
-		<section className="HeroCarusel">
-			<div className={cx(["component"])}>
+        <section className="HeroCarusel">
+            <div className={cx(["component"])}>
 				<Slider {...settings}>
 					{data.slice(0, 5).map((slide, index) => (
 						<div key={index}>
 							<div className={cx("bckg")}>
 								{slide?.node?.internaBlog?.imgen?.mediaItemUrl ? (
 									<Image
-										src={slide?.node?.internaBlog?.imgen?.mediaItemUrl}
-										layout="fill"
-										quality={100}
-										priority
-										alt={slide?.node?.internaBlog?.imgen?.altText}
-										title={slide?.node?.internaBlog?.imgen?.title}
-									/>
+                                        src={slide?.node?.internaBlog?.imgen?.mediaItemUrl}
+                                        quality={100}
+                                        priority
+                                        alt={slide?.node?.internaBlog?.imgen?.altText}
+                                        title={slide?.node?.internaBlog?.imgen?.title}
+                                        fill
+                                        sizes="100vw" />
 								) : (
 									<Image
-										src={ImageNotAvailable}
-										layout="fill"
-										quality={100}
-										priority
-										alt="Imagen no disponible"
-										title="no disponible"
-									/>
+                                        src={ImageNotAvailable}
+                                        quality={100}
+                                        priority
+                                        alt="Imagen no disponible"
+                                        title="no disponible"
+                                        fill
+                                        sizes="100vw" />
 								)}
 
 								<div className={cx("content")}>
@@ -86,10 +86,13 @@ const HeroCarusel = ({ data }) => {
 												- 5 min lectura
 											</p>
 											{slide?.node?.uri && (
-												<Link href={slide?.node?.uri} target="">
-													<a className="button button--white button--center">
+												<Link
+                                                    href={slide?.node?.uri}
+                                                    target=""
+                                                    className="button button--white button--center">
+													
 														Leer artículo
-													</a>
+													
 												</Link>
 											)}
 										</div>
@@ -100,8 +103,8 @@ const HeroCarusel = ({ data }) => {
 					))}
 				</Slider>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default HeroCarusel;

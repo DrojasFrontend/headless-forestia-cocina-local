@@ -15,8 +15,8 @@ const CardsGridTwo = ({ data }) => {
 		return <p>No hay Targetas disponibles.</p>;
 	}
 	return (
-		<section className="CardsGridTwo">
-			<div className={cx("component")}>
+        <section className="CardsGridTwo">
+            <div className={cx("component")}>
 				<Container>
 					<div className={cx(["title", "desktop"])}>
 						{titulo && <h2 className="heading--40 color--primary">{titulo}</h2>}
@@ -29,15 +29,16 @@ const CardsGridTwo = ({ data }) => {
 						{items?.map((item, index) => (
 							<div key={index} className={cx("card")}>
 								<Image
-									src={item?.imagen?.mediaItemUrl}
-									layout="fill"
-									quality={100}
-									priority
-									sizes="100vw"
-									objectFit="cover"
-									alt={item?.imagen?.altText}
-									title={item?.imagen?.title}
-								/>
+                                    src={item?.imagen?.mediaItemUrl}
+                                    quality={100}
+                                    priority
+                                    alt={item?.imagen?.altText}
+                                    title={item?.imagen?.title}
+                                    fill
+                                    sizes="100vw"
+                                    style={{
+                                        objectFit: "cover"
+                                    }} />
 								<div className={cx("title")}>
 									<h3
 										className={cx(["card-title", "heading--20 color--white"])}
@@ -53,8 +54,8 @@ const CardsGridTwo = ({ data }) => {
 					</div>
 				</Container>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardsGridTwo;

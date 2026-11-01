@@ -20,8 +20,8 @@ const Accordion = ({ data }) => {
 	};
 
 	return (
-		<section className="component">
-			<Container>
+        <section className="component">
+            <Container>
 				<div className={cx("component")}>
 					<div className={cx("grid")}>
 						<div className={cx("items")}>
@@ -51,21 +51,22 @@ const Accordion = ({ data }) => {
 						</div>
 						<div className={cx("img")}>
 							<Image
-								layout="fill"
-								src={imagen?.mediaItemUrl}
-								quality={100}
-								priority
-								sizes="100vw"
-								objectFit="cover"
-								alt={imagen?.altText}
-								title={imagen?.title}
-							/>
+                                src={imagen?.mediaItemUrl}
+                                quality={100}
+                                priority
+                                alt={imagen?.altText}
+                                title={imagen?.title}
+                                fill
+                                sizes="100vw"
+                                style={{
+                                    objectFit: "cover"
+                                }} />
 						</div>
 					</div>
 				</div>
 			</Container>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default Accordion;

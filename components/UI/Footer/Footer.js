@@ -23,68 +23,80 @@ export default function Footer({
 	const Logo = themeGeneralSettings?.options?.grupoheader?.logo?.mediaItemUrl;
 	const redes = themeGeneralSettings?.options?.grupoFooter?.redes;
 	return (
-		<footer className={cx("component")}>
-			<div className={cx("bckg")}>
+        <footer className={cx("component")}>
+            <div className={cx("bckg")}>
 				<Container>
 					<div className={cx("grid")}>
 						<div className={cx("logo")}>
-							<Link href="/">
-								<a aria-label="Ir a la página de inicio">
-									<Image
-										src={LogoDefault}
-										width={242}
-										height={105}
-										alt="Logotipo de Forestia cocina local Hotel Campestre"
-										title="Forestia cocina local Hotel Campestre - Relax y naturaleza en un entorno rural"
-									/>
-								</a>
-							</Link>
+							<Link href="/" aria-label="Ir a la página de inicio">
+
+                                <Image
+                                    src={LogoDefault}
+                                    width={242}
+                                    height={105}
+                                    alt="Logotipo de Forestia cocina local Hotel Campestre"
+                                    title="Forestia cocina local Hotel Campestre - Relax y naturaleza en un entorno rural"
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
+
+                            </Link>
 						</div>
 
 						<div className={cx(["menu", "desktop"])}>
-							<Link href="/contacto">
-								<a className="heading--20 font-weight--100 color--white">
+							<Link href="/contacto" className="heading--20 font-weight--100 color--white">
+								
 									Contacto
-								</a>
+								
 							</Link>
 							{menuItems?.map((link, index) => (
-								<Link key={index} href={link?.path}>
-									<a className="heading--20 font-weight--100 color--white">
-										{link?.label}
-									</a>
-								</Link>
+								<Link
+                                    key={index}
+                                    href={link?.path}
+                                    className="heading--20 font-weight--100 color--white">
+
+                                    {link?.label}
+
+                                </Link>
 							))}
 						</div>
 
 						<div className={cx("menu-social")}>
 							<div className={cx("menu")}>
 								{menuItemsMain?.map((link, index) => (
-									<Link key={index} href={link?.path}>
-										<a className="heading--20 font-weight--100 color--white">
-											{link?.label}
-										</a>
-									</Link>
+									<Link
+                                        key={index}
+                                        href={link?.path}
+                                        className="heading--20 font-weight--100 color--white">
+
+                                        {link?.label}
+
+                                    </Link>
 								))}
 							</div>
 							{redes && (
 								<div className={cx("social")}>
 									{redes.map((social, index) => (
 										<Link
-											key={index}
-											href={social?.link?.url}
-											target={social?.link?.target}
-										>
-											<a aria-label="Enlace a Instagram de Forestia cocina local">
-												<Image
-													priority
-													src={social?.icon?.mediaItemUrl}
-													width={24}
-													height={24}
-													alt={social?.link?.title}
-													title={`visitar ${social?.link?.title}`}
-												/>
-											</a>
-										</Link>
+                                            key={index}
+                                            href={social?.link?.url}
+                                            target={social?.link?.target}
+                                            aria-label="Enlace a Instagram de Forestia cocina local">
+
+                                            <Image
+                                                priority
+                                                src={social?.icon?.mediaItemUrl}
+                                                width={24}
+                                                height={24}
+                                                alt={social?.link?.title}
+                                                title={`visitar ${social?.link?.title}`}
+                                                style={{
+                                                    maxWidth: "100%",
+                                                    height: "auto"
+                                                }} />
+
+                                        </Link>
 									))}
 								</div>
 							)}
@@ -93,17 +105,20 @@ export default function Footer({
 
 					<div className={cx("mobile")}>
 						<div className={cx(["menu", "mobile"])}>
-							<Link href="/contacto">
-								<a className="heading--20 font-weight--100 color--white">
+							<Link href="/contacto" className="heading--20 font-weight--100 color--white">
+								
 									Contacto
-								</a>
+								
 							</Link>
 							{menuItems?.map((link, index) => (
-								<Link key={index} href={link?.path}>
-									<a className="heading--20 font-weight--100 color--white">
-										{link?.label}
-									</a>
-								</Link>
+								<Link
+                                    key={index}
+                                    href={link?.path}
+                                    className="heading--20 font-weight--100 color--white">
+
+                                    {link?.label}
+
+                                </Link>
 							))}
 						</div>
 					</div>
@@ -116,6 +131,6 @@ export default function Footer({
 					</div>
 				</Container>
 			</div>
-		</footer>
-	);
+        </footer>
+    );
 }

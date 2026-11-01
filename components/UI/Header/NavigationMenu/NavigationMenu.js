@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
-import { gql } from "@apollo/client";
 import Link from "next/link";
 import styles from "./NavigationMenu.module.scss";
 import stylesFromWP from "./NavigationMenuClassesFromWP.module.scss";
-import { flatListToHierarchical } from "@faustwp/core";
+import { flatListToHierarchical } from "@/utils/flatListToHierarchical";
 
 let cx = classNames.bind(styles);
 let cxFromWp = classNames.bind(stylesFromWP);
@@ -54,8 +53,8 @@ export default function NavigationMenu({
 
 	function renderMenu(items) {
 		return (
-			<ul className={cx("menu")}>
-				{items.map((item) => {
+            <ul className={cx("menu")}>
+                {items.map((item) => {
 					const { id, path, label, children, cssClasses } = item;
 
 					// @TODO - Remove guard clause after ghost menu items are no longer appended to array.
@@ -71,13 +70,13 @@ export default function NavigationMenu({
 					);
 				})}
 
-				<li>
-					<Link href="/ubicacion">
-						<a className={cx("location")}>
-							<IconLocation />
-							<span>Forestia Cocina Local</span>
-						</a>
-					</Link>
+                <li>
+					<Link href="/ubicacion" className={cx("location")}>
+
+                        <IconLocation />
+                        <span>Forestia Cocina Local</span>
+
+                    </Link>
 					{/* <button
 						onClick={navigateToSelvaggio}
 						className={cx("location")}>
@@ -85,8 +84,8 @@ export default function NavigationMenu({
 						<span>Forestia Cocina Local</span>
 					</button> */}
 				</li>
-			</ul>
-		);
+            </ul>
+        );
 	}
 
 	// Hook para manejar el click fuera del menú
@@ -127,19 +126,3 @@ export default function NavigationMenu({
 	);
 }
 
-NavigationMenu.fragments = {
-	entry: gql`
-		fragment NavigationMenuItemFragment on MenuItem {
-			id
-			path
-			label
-			parentId
-			cssClasses
-			menu {
-				node {
-					name
-				}
-			}
-		}
-	`,
-};

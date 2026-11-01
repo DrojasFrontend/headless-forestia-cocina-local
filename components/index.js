@@ -2,7 +2,6 @@
 export { HeaderWhite } from "./UI/Header/HeaderWhite";
 export { HeaderGreen } from "./UI/Header/HeaderGreen";
 export { NavigationMenu } from "./UI/Header/NavigationMenu";
-export { NavigationMenuFloating } from "./UI/Header/NavigationMenuFloating";
 
 //Breadcrumbs
 import { Breadcrumbs } from "./Breadcrumbs";
@@ -68,4 +67,3 @@ export { FormatDate } from "./FormatDate";
 export { Heading } from "./Heading";
 export { Main } from "./Main";
 
-export { SEO } from "./SEO";

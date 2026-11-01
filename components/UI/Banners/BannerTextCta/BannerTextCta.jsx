@@ -11,35 +11,34 @@ import { Container } from "../../../Layout/Container";
 const BannerTextCta = ({ data }) => {
 	const { cta, titulo, imagen } = data;
 	return (
-		<section className="BannerTextCta">
-			<div className={cx("component")}>
+        <section className="BannerTextCta">
+            <div className={cx("component")}>
 				<Container>
 					<div className={cx("bckg")}>
 						<Image
-							src={imagen?.mediaItemUrl}
-							layout="fill"
-							quality={100}
-							priority
-							sizes="100vw"
-							alt={imagen?.altText}
-							title={imagen?.title}
-						/>
+                            src={imagen?.mediaItemUrl}
+                            quality={100}
+                            priority
+                            alt={imagen?.altText}
+                            title={imagen?.title}
+                            fill
+                            sizes="100vw" />
 						<div className={cx("copy")}>
 							<h2 className="heading--40 color--white">{titulo}</h2>
 
 							{cta && (
-								<Link href={cta?.url}>
-									<a className="button button--white" target={cta?.target}>
-										{cta?.title}
-									</a>
-								</Link>
+								<Link href={cta?.url} className="button button--white" target={cta?.target}>
+
+                                    {cta?.title}
+
+                                </Link>
 							)}
 						</div>
 					</div>
 				</Container>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default BannerTextCta;

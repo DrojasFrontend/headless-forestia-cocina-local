@@ -37,8 +37,8 @@ const FormContact = () => {
 	};
 
 	return (
-		<section className="FormContact">
-			<div className={cx("component")}>
+        <section className="FormContact">
+            <div className={cx("component")}>
 				<div className="container">
 					<div className={cx("title")}>
 						<h2 className="heading--44">
@@ -118,30 +118,27 @@ const FormContact = () => {
 							</form>
 						</div>
 						<div className={cx("info")}>
-							<Link href="mailto:info@casaselvaggio.com">
-								<a className={cx("link")}>
-									<span>
-										<IconEnvelope />
-									</span>
-									info@casaselvaggio.com
-								</a>
-							</Link>
-							<Link href="tel:+13784001234">
-								<a className={cx("link")}>
-									<span>
-										<IconPhone />
-									</span>
-									+1 (378) 400-1234
-								</a>
-							</Link>
-							<Link href="https://www.casaselvaggio.com/">
-								<a className={cx("link")}>
-									<span>
-										<IconWorld />
-									</span>
-									forestiacocinalocal.com
-								</a>
-							</Link>
+							<Link href="mailto:info@casaselvaggio.com" className={cx("link")}>
+
+                                <span>
+                                    <IconEnvelope />
+                                </span>info@casaselvaggio.com
+                                                                
+                            </Link>
+							<Link href="tel:+13784001234" className={cx("link")}>
+
+                                <span>
+                                    <IconPhone />
+                                </span>+1 (378) 400-1234
+                                                                
+                            </Link>
+							<Link href="https://www.casaselvaggio.com/" className={cx("link")}>
+
+                                <span>
+                                    <IconWorld />
+                                </span>forestiacocinalocal.com
+                                                                
+                            </Link>
 							<div className={cx("social")}>
 								<SocialMedia />
 							</div>
@@ -149,8 +146,8 @@ const FormContact = () => {
 					</div>
 				</div>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default FormContact;

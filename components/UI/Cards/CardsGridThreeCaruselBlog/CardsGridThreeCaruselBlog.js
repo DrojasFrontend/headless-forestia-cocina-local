@@ -68,8 +68,8 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 	const shuffledData = [...data].sort(() => 0.5 - Math.random());
 
 	return (
-		<section className="CardsGridThreeCaruselBlog">
-			<div className={cx(["component"])}>
+        <section className="CardsGridThreeCaruselBlog">
+            <div className={cx(["component"])}>
 				<div className={cx("container")}>
 					<div className={cx("grid-slick")}>
 						<div className={cx("info")}>
@@ -94,27 +94,32 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 									{targeta?.node?.featuredImage?.node?.mediaItemUrl ? (
 										<>
 											<Image
-												src={targeta.node.featuredImage.node.mediaItemUrl}
-												layout="fill"
-												objectFit="cover"
-												quality={100}
-												priority={true}
-												alt={targeta?.node?.featuredImage?.node?.altText || ""}
-												title={targeta?.node?.featuredImage?.node?.title || ""}
-											/>
+                                                src={targeta.node.featuredImage.node.mediaItemUrl}
+                                                quality={100}
+                                                priority={true}
+                                                alt={targeta?.node?.featuredImage?.node?.altText || ""}
+                                                title={targeta?.node?.featuredImage?.node?.title || ""}
+                                                fill
+                                                sizes="100vw"
+                                                style={{
+                                                    objectFit: "cover"
+                                                }} />
 											<h3 className={cx(["title", "heading--20 color--white"])}>
 												{targeta.node.title}
 											</h3>
 										</>
 									) : (
 										<Image
-											src={ImageNotAvailable}
-											width={372}
-											height={230}
-											sizes="100vw"
-											alt="Imagen no disponible"
-											title="no disponible"
-										/>
+                                            src={ImageNotAvailable}
+                                            width={372}
+                                            height={230}
+                                            alt="Imagen no disponible"
+                                            title="no disponible"
+                                            sizes="100vw"
+                                            style={{
+                                                maxWidth: "100%",
+                                                height: "auto"
+                                            }} />
 									)}
 								</div>
 							))}
@@ -122,8 +127,8 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 					</div>
 				</div>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardsGridThreeCaruselBlog;

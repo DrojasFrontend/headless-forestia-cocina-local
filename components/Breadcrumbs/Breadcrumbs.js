@@ -1,13 +1,13 @@
+"use client";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import className from "classnames/bind";
 import styles from "./Breadcrumbs.module.scss";
 
 let cx = className.bind(styles);
 
 export default function Breadcrumbs() {
-	const router = useRouter();
-	const { asPath } = router;
+	const asPath = usePathname() ?? "/";
 
 	const pathArray = asPath.split("/").filter((segment) => segment !== "");
 
@@ -17,12 +17,12 @@ export default function Breadcrumbs() {
 	});
 
 	return (
-		<nav aria-label="breadcrumb">
-			<ul className={cx("breadcrumbs")}>
+        <nav aria-label="breadcrumb">
+            <ul className={cx("breadcrumbs")}>
 				{/* Inicio siempre es un enlace */}
 				<li>
-					<Link href="/">
-						<a className="heading--14 color--primary">Inicio</a>
+					<Link href="/" className="heading--14 color--primary">
+						Inicio
 					</Link>
 				</li>
 				{/* Los demás elementos no son enlaces */}
@@ -33,6 +33,6 @@ export default function Breadcrumbs() {
 					</li>
 				))}
 			</ul>
-		</nav>
-	);
+        </nav>
+    );
 }

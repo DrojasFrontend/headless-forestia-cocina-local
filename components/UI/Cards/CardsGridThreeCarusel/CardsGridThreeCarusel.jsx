@@ -66,8 +66,8 @@ const CardsGridThreeCarusel = ({ data }) => {
 	}
 
 	return (
-		<section className="CardsGridThreeCarusel">
-			<div className={cx(["component"])}>
+        <section className="CardsGridThreeCarusel">
+            <div className={cx(["component"])}>
 				<Container>
 					<div className={cx(["grid"])}>
 						<h2 className={cx(["heading", "heading--40 color--primary"])}>
@@ -88,15 +88,18 @@ const CardsGridThreeCarusel = ({ data }) => {
 								{targetas.map((targeta, index) => (
 									<div key={index} className={cx("card")}>
 										<Image
-											src={targeta?.imagen?.mediaItemUrl}
-											width={372}
-											height={500}
-											quality={100}
-											sizes="100vw"
-											objectFit="cover"
-											alt={targeta?.imagen?.altText}
-											title={targeta?.imagen?.title}
-										/>
+                                            src={targeta?.imagen?.mediaItemUrl}
+                                            width={372}
+                                            height={500}
+                                            quality={100}
+                                            alt={targeta?.imagen?.altText}
+                                            title={targeta?.imagen?.title}
+                                            sizes="100vw"
+                                            style={{
+                                                maxWidth: "100%",
+                                                height: "auto",
+                                                objectFit: "cover"
+                                            }} />
 										<h3 className={cx(["title", "heading--24 color--white"])}>
 											{targeta.subTitulo}
 										</h3>
@@ -135,8 +138,8 @@ const CardsGridThreeCarusel = ({ data }) => {
 					</div>
 				</div>
 			</div>
-		</section>
-	);
+        </section>
+    );
 };
 
 export default CardsGridThreeCarusel;
