@@ -11,7 +11,7 @@ let cx = className.bind(styles);
 import { Container } from "../../../Layout/Container";
 import { FormatDate } from "../../../FormatDate";
 
-import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
+import ImageNotAvailable from "@/public/img/image-not-available-desktop.svg";
 
 const HeroCarusel = ({ data }) => {
 	// const { slides } = data;
@@ -29,16 +29,19 @@ const HeroCarusel = ({ data }) => {
         <section className="HeroCarusel">
             <div className={cx(["component"])}>
 				<Slider {...settings}>
-					{data.slice(0, 5).map((slide, index) => (
+					{data.slice(0, 5).map((slide, index) => {
+						// internaBlog.imgen no se recuperó del WP anterior: si falta, se usa la imagen destacada.
+						const imagen = slide?.node?.internaBlog?.imgen ?? slide?.node?.featuredImage?.node;
+						return (
 						<div key={index}>
 							<div className={cx("bckg")}>
-								{slide?.node?.internaBlog?.imgen?.mediaItemUrl ? (
+								{imagen?.mediaItemUrl ? (
 									<Image
-                                        src={slide?.node?.internaBlog?.imgen?.mediaItemUrl}
+                                        src={imagen.mediaItemUrl}
                                         quality={100}
                                         priority
-                                        alt={slide?.node?.internaBlog?.imgen?.altText}
-                                        title={slide?.node?.internaBlog?.imgen?.title}
+                                        alt={imagen.altText ?? ""}
+                                        title={imagen.title}
                                         fill
                                         sizes="100vw" />
 								) : (
@@ -100,7 +103,8 @@ const HeroCarusel = ({ data }) => {
 								</div>
 							</div>
 						</div>
-					))}
+						);
+					})}
 				</Slider>
 			</div>
         </section>

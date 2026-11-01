@@ -9,7 +9,7 @@ let cx = classNames.bind(styles);
 
 import { Container } from "../../../Layout/Container";
 
-import ImageNotAvailable from "/public/img/image-not-available.png";
+import ImageNotAvailable from "@/public/img/image-not-available.png";
 
 const CardsGridThreeCaruselBlog = ({ data }) => {
 	const [nav1, setNav1] = useState(null);

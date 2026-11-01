@@ -68,3 +68,7 @@
 .link {
 	color: var(--color-primary);
 }
+// El ítem con forma de botón (Reservar) mantiene el texto blanco: en Next 16 este módulo carga después de .button--primary.
+.link.button--header {
+	color: var(--color-white);
+}

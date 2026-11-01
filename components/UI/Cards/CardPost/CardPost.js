@@ -8,7 +8,7 @@ import styles from "./CardPost.module.scss";
 let cx = className.bind(styles);
 
 import { FormatDate } from "../../../FormatDate";
-import ImageNotAvailable from "/public/img/image-not-available.png";
+import ImageNotAvailable from "@/public/img/image-not-available.png";
 
 const CardPost = ({ data, className, excerptLength = 160 }) => {
 	const { title, excerpt, uri, date, author, featuredImage } = data.node;

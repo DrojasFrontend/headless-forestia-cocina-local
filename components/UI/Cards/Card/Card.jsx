@@ -8,7 +8,7 @@ import className from "classnames/bind";
 import styles from "./Card.module.scss";
 let cx = className.bind(styles);
 
-import ImageNotAvailable from "/public/img/image-not-available.png";
+import ImageNotAvailable from "@/public/img/image-not-available.png";
 
 export default function Card({
 	title,

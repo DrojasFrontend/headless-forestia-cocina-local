@@ -125,14 +125,14 @@ const FormContact = () => {
                                 </span>info@casaselvaggio.com
                                                                 
                             </Link>
-							<Link href="tel:+13784001234" className={cx("link")}>
+							<Link href="https://wa.link/r515nr" className={cx("link")}>
 
                                 <span>
                                     <IconPhone />
-                                </span>+1 (378) 400-1234
+                                </span>(+57) 311 501 9212
                                                                 
                             </Link>
-							<Link href="https://www.casaselvaggio.com/" className={cx("link")}>
+							<Link href="https://www.forestiacocinalocal.com/" className={cx("link")}>
 
                                 <span>
                                     <IconWorld />

@@ -9,7 +9,7 @@ import styles from "./HeroImageTextCTA.module.scss";
 let cx = className.bind(styles);
 
 import { Container } from "../../../Layout/Container";
-import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
+import ImageNotAvailable from "@/public/img/image-not-available-desktop.svg";
 
 const HeroImageText = ({ data }) => {
 	const { title, excerpt, postInterna, titulo, descripcion, cta, imagen } = data;

@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import styles from "./Footer.module.scss";
 let cx = classNames.bind(styles);
 
-import LogoDefault from "/public/img/logo-white-forestia-cocina-local.svg";
+import LogoDefault from "@/public/img/logo-white-forestia-cocina-local.svg";
 
 import { Container } from "../../Layout/Container";
 import IconInstagram from "../../SVG/IconInstagram";

@@ -1,8 +1,16 @@
+import path from "node:path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	// Mismas URLs que el sitio anterior (/contacto/, /<entrada>/).
+	trailingSlash: true,
+	// Hosting compartido: pocas consultas a WordPress en paralelo durante la build.
+	experimental: { cpus: 1, staticGenerationMaxConcurrency: 2 },
 	sassOptions: {
-		includePaths: ["node_modules"],
+		// Los SCSS importan "styles/..." desde la raíz del proyecto.
+		includePaths: [path.join(process.cwd(), "node_modules"), process.cwd()],
+		loadPaths: [path.join(process.cwd(), "node_modules"), process.cwd()],
 		quietDeps: true,
 		silenceDeprecations: ["import", "global-builtin", "color-functions", "legacy-js-api", "if-function"],
 	},

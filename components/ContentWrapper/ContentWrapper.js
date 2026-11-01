@@ -1,12 +1,10 @@
-import className from 'classnames/bind';
-import styles from './ContentWrapper.module.scss';
+import classNames from 'classnames';
+import './ContentWrapper.scss';
 import {sanitize} from '../../utils/miscellaneous'
-
-let cx = className.bind(styles);
 
 export default function ContentWrapper({ content, children, className }) {
   return (
-    <article className={cx(['component', className])}>
+    <article className={classNames('contenido-wp', className)}>
       <div dangerouslySetInnerHTML={{ __html: sanitize(content ?? '' )}} />
       {children}
     </article>

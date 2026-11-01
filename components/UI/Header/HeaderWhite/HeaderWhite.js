@@ -10,8 +10,8 @@ let cx = className.bind(styles);
 import { Container } from "../../../Layout/Container";
 import IconMenu from "../../../SVG/IconMenu";
 
-import LogoDefault from "/public/img/logo-white-forestia-cocina-local.svg";
-import LogoGreen from "/public/img/logo-green-forestia-cocina-local.svg";
+import LogoDefault from "@/public/img/logo-white-forestia-cocina-local.svg";
+import LogoGreen from "@/public/img/logo-green-forestia-cocina-local.svg";
 
 export default function Header({
 	title,
