@@ -14,6 +14,11 @@ import ImageNotAvailable from "@/public/img/image-not-available.png";
 const CardsGridThreeCaruselBlog = ({ data }) => {
 	const [nav1, setNav1] = useState(null);
 	let sliderRef1 = useRef(null);
+	// Orden aleatorio solo en el navegador: mezclar durante el render daba un orden distinto al del servidor (error de hidratación #418).
+	const [shuffledData, setShuffledData] = useState(data ?? []);
+	useEffect(() => {
+		setShuffledData([...(data ?? [])].sort(() => 0.5 - Math.random()));
+	}, [data]);
 
 	const settings = {
 		dots: false,
@@ -63,9 +68,6 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 	if (!data?.length) {
 		return <p>No hay Entradas disponibles.</p>;
 	}
-
-	// Ordenar los posts de manera aleatoria
-	const shuffledData = [...data].sort(() => 0.5 - Math.random());
 
 	return (
         <section className="CardsGridThreeCaruselBlog">
