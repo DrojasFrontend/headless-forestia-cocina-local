@@ -3,6 +3,8 @@ import path from "node:path";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	// Hostinger Web Apps espera la salida standalone (server.js + node_modules mínimo).
+	output: "standalone",
 	// Mismas URLs que el sitio anterior (/contacto/, /<entrada>/).
 	trailingSlash: true,
 	// Hosting compartido: pocas consultas a WordPress en paralelo durante la build.
