@@ -6,7 +6,8 @@ const nextConfig = {
 	// Mismas URLs que el sitio anterior (/contacto/, /<entrada>/).
 	trailingSlash: true,
 	// Hosting compartido: pocas consultas a WordPress en paralelo durante la build.
-	experimental: { cpus: 1, staticGenerationMaxConcurrency: 2 },
+	// (Sin `cpus: 1`: con eso la compilación en Hostinger no terminaba y la cortaban.)
+	experimental: { staticGenerationMaxConcurrency: 2 },
 	sassOptions: {
 		// Los SCSS importan "styles/..." desde la raíz del proyecto.
 		includePaths: [path.join(process.cwd(), "node_modules"), process.cwd()],
