@@ -70,12 +70,16 @@ export default function Entrada(props) {
 												fill
 												src={featuredImage.node.sourceUrl}
 												priority
-												alt={featuredImage.node.altText}
-												title={featuredImage.node.title}
+												alt={featuredImage.node.altText || ""}
+												sizes="(min-width: 1024px) 66vw, 100vw"
 												style={{ objectFit: "cover" }}
 											/>
 										)}
 									</div>
+									{featuredImage?.node?.caption && (
+										// Crédito de la foto (las licencias CC BY / BY-SA lo exigen).
+										<p className="sectionDetailPost__credito heading--12 color--gray">{featuredImage.node.caption.replace(/<[^>]+>/g, "").trim()}</p>
+									)}
 									<ContentWrapper content={content} />
 								</section>
 								<section className="sectionSideBar">
@@ -91,9 +95,8 @@ export default function Entrada(props) {
 																}
 																fill
 																style={{ objectFit: "cover" }}
-																sizes="100vw"
-																alt={featuredImage?.node?.altText}
-																title={featuredImage?.node?.title}
+																sizes="96px"
+																alt={post?.node?.featuredImage?.node?.altText || ""}
 															/>
 														) : (
 															<Image

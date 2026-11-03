@@ -32,7 +32,7 @@ const CardsGridTwo = ({ data }) => {
                                     src={item?.imagen?.mediaItemUrl}
                                     quality={100}
                                     priority
-                                    alt={item?.imagen?.altText}
+                                    alt={item?.imagen?.altText || ""}
                                     title={item?.imagen?.title}
                                     fill
                                     sizes="100vw"

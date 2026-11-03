@@ -27,7 +27,7 @@ export default function Card({
                                 src={featuredImage?.node?.mediaItemUrl}
                                 quality={100}
                                 priority
-                                alt={featuredImage?.node?.altText}
+                                alt={featuredImage?.node?.altText || ""}
                                 title={featuredImage?.node?.title}
                                 fill
                                 sizes="100vw" />

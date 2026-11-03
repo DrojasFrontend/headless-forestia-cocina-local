@@ -67,7 +67,7 @@ const CardGrid = ({ data, className }) => {
                                     width={372}
                                     height={440}
                                     quality={100}
-                                    alt={targeta?.imagen?.altText}
+                                    alt={targeta?.imagen?.altText || ""}
                                     title={targeta?.imagen?.title}
                                     sizes="100vw"
                                     style={{

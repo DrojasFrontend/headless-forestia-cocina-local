@@ -75,7 +75,7 @@ const TextImage = ({ data }) => {
                         src={img?.mediaItemUrl}
                         quality={100}
                         priority
-                        alt={img?.altText}
+                        alt={img?.altText || ""}
                         title={img?.title}
                         fill
                         sizes="100vw"

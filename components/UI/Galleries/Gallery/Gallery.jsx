@@ -27,7 +27,7 @@ const Gallery = ({data}) => {
                                     height={418}
                                     quality={100}
                                     priority
-                                    alt={item?.imagen?.altText}
+                                    alt={item?.imagen?.altText || ""}
                                     title={item?.imagen?.title}
                                     style={{
                                         maxWidth: "100%",

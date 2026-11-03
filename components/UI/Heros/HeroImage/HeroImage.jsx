@@ -14,7 +14,7 @@ const HeroImage = ({data, className }) => {
                     src={imagen.mediaItemUrl}
                     priority
                     quality={100}
-                    alt={imagen.altText}
+                    alt={imagen.altText || ""}
                     title={imagen.title}
                     fill
                     sizes="100vw" />

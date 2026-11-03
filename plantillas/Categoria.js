@@ -51,7 +51,7 @@ export default function Component(props) {
 									) // Filtrar "Uncategorized"
 									.map((category, index) => (
 										<li key={index}>
-											<Link href={`/categoria/${category?.node?.slug}`} className="category">
+											<Link href={`/categoria/${category?.node?.slug}`} className={`category${category?.node?.slug === props?.slugActual ? " active" : ""}`} aria-current={category?.node?.slug === props?.slugActual ? "page" : undefined}>
 													{category?.node?.postCategoria?.icono?.mediaItemUrl && (<Image src={category.node.postCategoria.icono.mediaItemUrl}
 														alt={category?.node?.name}
 														width={44}

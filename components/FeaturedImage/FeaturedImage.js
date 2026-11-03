@@ -19,7 +19,7 @@ export default function FeaturedImage({
     <figure className={className}>
       <Image
         src={src}
-        alt={altText}
+        alt={altText || ""}
         layout={layout}
         width={width}
         height={height}

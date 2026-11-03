@@ -9,8 +9,8 @@ export default function FormatDate({ date }) {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    hour12: false
+    timeZone: 'America/Bogota',
   };
 
-  return <>{formattedDate.toLocaleDateString('en-US', timeformat)}</>;
+  return <>{formattedDate.toLocaleDateString('es-CO', timeformat)}</>;
 }

@@ -39,7 +39,7 @@ const CardsPlan = ({data, detail}) => {
                                     height={440}
                                     quality={100}
                                     priority
-                                    alt={targeta?.featuredImage?.node?.altText}
+                                    alt={targeta?.featuredImage?.node?.altText || ""}
                                     title={targeta?.featuredImage?.node?.title}
                                     sizes="100vw"
                                     style={{

@@ -54,7 +54,7 @@ const Carusel = ({ data }) => {
                                 height={609}
                                 quality={100}
                                 priority
-                                alt={img?.altTxt}
+                                alt={img?.altText || ""}
                                 title={img?.title}
                                 sizes="100vw"
                                 style={{

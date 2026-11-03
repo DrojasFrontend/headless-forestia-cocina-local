@@ -97,12 +97,9 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 										<>
 											<Image
                                                 src={targeta.node.featuredImage.node.mediaItemUrl}
-                                                quality={100}
-                                                priority={true}
                                                 alt={targeta?.node?.featuredImage?.node?.altText || ""}
-                                                title={targeta?.node?.featuredImage?.node?.title || ""}
                                                 fill
-                                                sizes="100vw"
+                                                sizes="(min-width: 1024px) 33vw, 85vw"
                                                 style={{
                                                     objectFit: "cover"
                                                 }} />

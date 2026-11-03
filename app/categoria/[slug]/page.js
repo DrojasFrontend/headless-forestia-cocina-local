@@ -18,5 +18,5 @@ export default async function Pagina({ params }) {
 	if (!categorias.some(({ node }) => node.slug === slug)) notFound();
 	const posts = entradas.filter(({ node }) => node.categories?.nodes?.some((c) => c.slug === slug));
 	// La plantilla vieja leía las entradas en nodeByUri.posts.edges.
-	return <Categoria data={{ ...sitio, categories: { edges: categorias }, nodeByUri: { posts: { edges: posts } } }} />;
+	return <Categoria slugActual={slug} data={{ ...sitio, categories: { edges: categorias }, nodeByUri: { posts: { edges: posts } } }} />;
 }

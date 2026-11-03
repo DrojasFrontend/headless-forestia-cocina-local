@@ -35,7 +35,7 @@ const CardsBigSmall = ({ data }) => {
 									<Image
                                         src={targeta?.imagen?.mediaItemUrl}
                                         quality={100}
-                                        alt={targeta?.imagen?.altText}
+                                        alt={targeta?.imagen?.altText || ""}
                                         title={targeta?.imagen?.title}
                                         fill
                                         sizes="100vw"

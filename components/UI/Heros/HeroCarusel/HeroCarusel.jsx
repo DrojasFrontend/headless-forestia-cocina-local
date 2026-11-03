@@ -33,7 +33,7 @@ const HeroCarusel = ({ data }) => {
                                     src={slide?.imagen?.mediaItemUrl}
                                     quality={100}
                                     priority
-                                    alt={slide?.imagen?.altText}
+                                    alt={slide?.imagen?.altText || ""}
                                     title={slide?.imagen?.title}
                                     fill
                                     sizes="100vw" />

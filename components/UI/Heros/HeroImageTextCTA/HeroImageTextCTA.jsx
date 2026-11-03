@@ -22,7 +22,7 @@ const HeroImageText = ({ data }) => {
                             src={postInterna?.grupobanner?.imagen?.mediaItemUrl}
                             quality={100}
                             priority
-                            alt={postInterna?.grupobanner?.imagen?.altText}
+                            alt={postInterna?.grupobanner?.imagen?.altText || ""}
                             title={postInterna?.grupobanner?.imagen?.title}
                             fill
                             sizes="100vw" />
@@ -31,7 +31,7 @@ const HeroImageText = ({ data }) => {
                             src={imagen?.mediaItemUrl}
                             quality={100}
                             priority
-                            alt={imagen?.altText}
+                            alt={imagen?.altText || ""}
                             title={imagen?.title}
                             fill
                             sizes="100vw" />

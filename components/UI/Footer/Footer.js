@@ -11,9 +11,26 @@ import { Container } from "../../Layout/Container";
 import IconInstagram from "../../SVG/IconInstagram";
 import IconFacebook from "../../SVG/IconFacebook";
 import IconYoutube from "../../SVG/IconYoutube";
-import IconWaze from "../../SVG/IconWaze";
 import IconWhatsapp from "../../SVG/IconWhatsapp";
 import IconTikTok from "../../SVG/IconTikTok";
+
+// Íconos de redes como SVG del tema (mismo color y tamaño). Se elige por la URL;
+// si la red no está aquí, se usa el ícono subido en WordPress.
+const ICONOS_RED = [
+	[/instagram\.com/, IconInstagram],
+	[/facebook\.com|fb\.com/, IconFacebook],
+	[/tiktok\.com/, IconTikTok],
+	[/youtube\.com|youtu\.be/, IconYoutube],
+	[/wa\.me|whatsapp/, IconWhatsapp],
+];
+
+function IconoRed({ social }) {
+	const url = social?.link?.url ?? "";
+	const Icono = ICONOS_RED.find(([patron]) => patron.test(url))?.[1];
+	if (Icono) return <Icono width={24} height={24} aria-hidden="true" />;
+	if (!social?.icon?.mediaItemUrl) return social?.link?.title ?? null;
+	return <Image src={social.icon.mediaItemUrl} width={24} height={24} alt="" />;
+}
 
 export default function Footer({
 	themeGeneralSettings,
@@ -45,11 +62,6 @@ export default function Footer({
 						</div>
 
 						<div className={cx(["menu", "desktop"])}>
-							<Link href="/contacto" className="heading--20 font-weight--100 color--white">
-								
-									Contacto
-								
-							</Link>
 							{menuItems?.map((link, index) => (
 								<Link
                                     key={index}
@@ -79,24 +91,14 @@ export default function Footer({
 								<div className={cx("social")}>
 									{redes.map((social, index) => (
 										<Link
-                                            key={index}
-                                            href={social?.link?.url}
-                                            target={social?.link?.target}
-                                            aria-label="Enlace a Instagram de Forestia cocina local">
-
-                                            <Image
-                                                priority
-                                                src={social?.icon?.mediaItemUrl}
-                                                width={24}
-                                                height={24}
-                                                alt={social?.link?.title}
-                                                title={`visitar ${social?.link?.title}`}
-                                                style={{
-                                                    maxWidth: "100%",
-                                                    height: "auto"
-                                                }} />
-
-                                        </Link>
+										key={index}
+										href={social?.link?.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={`Forestia Cocina Local en ${social?.link?.title}`}
+									>
+										<IconoRed social={social} />
+									</Link>
 									))}
 								</div>
 							)}
@@ -105,11 +107,6 @@ export default function Footer({
 
 					<div className={cx("mobile")}>
 						<div className={cx(["menu", "mobile"])}>
-							<Link href="/contacto" className="heading--20 font-weight--100 color--white">
-								
-									Contacto
-								
-							</Link>
 							{menuItems?.map((link, index) => (
 								<Link
                                     key={index}

@@ -20,7 +20,7 @@ export async function generateMetadata() {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="es">
+		<html lang="es" data-scroll-behavior="smooth">
 			<body>
 				<Script id="gtm" strategy="afterInteractive">
 					{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

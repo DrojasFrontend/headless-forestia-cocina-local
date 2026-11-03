@@ -24,27 +24,15 @@ const CardPost = ({ data, className, excerptLength = 160 }) => {
                 {featuredImage ? (
                     <Image
                         src={featuredImage?.node?.mediaItemUrl}
-                        width={372}
-                        height={230}
-                        alt={featuredImage?.node?.altText}
-                        title={featuredImage?.node?.title}
-                        sizes="100vw"
-                        style={{
-                            maxWidth: "100%",
-                            height: "auto"
-                        }} />
+                        fill
+                        alt={featuredImage?.node?.altText || ""}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 680px) 50vw, 100vw" />
                 ) : (
                     <Image
                         src={ImageNotAvailable}
-                        width={372}
-                        height={230}
+                        fill
                         alt="Imagen no disponible"
-                        title="no disponible"
-                        sizes="100vw"
-                        style={{
-                            maxWidth: "100%",
-                            height: "auto"
-                        }} />
+                        sizes="(min-width: 1024px) 33vw, (min-width: 680px) 50vw, 100vw" />
                 )}
 
             </Link>

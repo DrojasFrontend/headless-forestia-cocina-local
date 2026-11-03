@@ -41,7 +41,6 @@ const HeroCarusel = ({ data }) => {
                                         quality={100}
                                         priority
                                         alt={imagen.altText ?? ""}
-                                        title={imagen.title}
                                         fill
                                         sizes="100vw" />
 								) : (
